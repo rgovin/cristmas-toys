@@ -1,0 +1,567 @@
+*,*:before,*:after {
+    -moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+h1,h2,h3 {
+    margin: 0px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+a:visited {
+    color: white;
+}
+a:hover, a:active {
+    color: #9D8665;
+}
+
+.section {
+    width: 100%;
+}
+
+.dark-section {
+    background-color: #030303;
+}
+ 
+.content-section {
+    margin: 0 auto;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    max-width: 1440px;
+}
+
+ .head-content {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1440px;
+    height: 200px;
+    color:  #FFFFFF;
+} 
+
+.logo {
+    background: url(./assets/frames/Frame.svg) no-repeat left top 8px;;
+    font-family: Forum;
+    font-size: 28px;
+    line-height: 50px;   
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding-left: 70px;
+    margin-left: 17%;
+    transition: all 0.3s;
+}
+
+.logo:hover {
+    filter: invert(51%) sepia(30%) saturate(388%) hue-rotate(356deg) brightness(99%) contrast(88%);
+}
+
+
+.navigation {
+    display: flex;
+    justify-content: right;
+    align-content: center;
+    font-family: 'Roboto', sans-serif;
+    max-width: 720px;
+    height: 50px;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 50px;
+    letter-spacing: 2px;
+}
+
+.navigation li {
+  list-style: none;
+  padding: 0 20px;
+}
+
+.navigation li:last-child {
+  list-style: none;
+  padding: 0;
+}
+
+
+.welcome {
+    margin: 0 auto;
+    max-width: 1440px;
+    height: 750px;
+    background: url(assets/background.jpg) calc(50% + 350px) calc(-70px) no-repeat;
+}
+
+.welcome-interactive {
+    padding: 115px 0 0 240px;
+}
+
+.section-title {
+    font-family: 'Forum', cursive;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 90px;
+    letter-spacing: 5px;
+    text-align: left;
+    color: white;
+    text-transform: uppercase;
+}
+.welcome-inf {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+.discover {
+    width: 360px;
+    height: 75px;
+    margin-top: 70px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 26px;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+    background: #710707;
+    border: none;
+    border-radius: 10px;
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+
+.discover:hover {
+background: #9D8665;
+}
+
+.section-title-general {
+    position: relative;
+    width: 1440px;
+    font-family: Forum;
+    font-size: 80px;
+    line-height: 90px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #9D8665;
+}
+
+.section-title-general:after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #710707;
+}
+
+.virtual-tour {
+    width: 1440px;
+    height: 997px;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    gap: 40px 50px;
+}
+
+.link-virtual-tour {
+    display: block;
+    width: 440px;
+    height: 422px;
+    }
+
+.imgage-tour {
+    width: 440px;
+    height: 285px;
+}
+.text-tour {
+    position: relative;
+    bottom: -20px;
+    font-family: Forum;
+    font-size: 32px;
+    line-height: 35px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.text-tour:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    width: 300px;
+    height: 2px;
+    background-color: #710707;
+    transition: all 0.3s;
+}
+.link-virtual-tour:hover img {
+    border: 1px solid rgb(173, 152, 29);
+    transition: border 0.3s;
+}
+
+.link-virtual-tour:hover .text-tour:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #710707;
+}
+
+
+.text-tour-add {
+    margin-top: 45px;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    color: #000000;
+}
+.text-tour-google {
+    margin-top: -12px;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.section-explore {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 240px;
+    
+}
+
+.block-explore {
+    width: 720px;
+    height: 720px;
+}
+
+.picture-expore {
+    width: 720px;
+    height: 700px;
+}
+
+
+.text-explore {
+    margin-top: 25px;
+    padding-right: 65px;
+    font-family: Roboto;
+    text-align: left;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 38px;
+    color: #FFFFFF;
+}
+
+.text-explore-first { 
+    margin-top: 75px;
+}
+
+.explore-section-title-general:after {
+    width: 620px;
+}
+
+.span-gold {
+    color: #9d8665;
+}
+
+.video-section {
+    position: relative;
+}
+
+.video-player { 
+    width: 1440px;
+    height:720px;
+    object-fit: fill;
+}
+
+.button-play {
+    position: absolute;
+    bottom: 490px;
+    left: 830px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;    
+}
+
+.tool-bar {
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #000;
+    bottom: 120px;
+    Width:1440px;
+    Height: 85px;
+}
+
+.buttons-tool {
+    padding-top: 8px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;   
+}
+
+.progress {
+    width: 800px;
+}
+.volume {
+    width: 155px;
+}
+
+.video-information {
+    max-width: 1440px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.video-title {
+    font-family: Forum;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 90px;
+    letter-spacing: 5px;
+    text-align: left;
+}
+.video-title:after {
+    content: none;
+}
+
+.text-video {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 38px;
+    align-items: center;
+}
+
+
+.section-title-ticket{
+    font-family: Forum;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 90px;
+    letter-spacing: 5px;
+    text-align: left;
+    color: #9D8665;
+}
+
+.radio-image-ticket {
+    height: 550px;
+    margin-top: 100px;
+    position: relative;
+}
+
+.ticket-type {
+    width: 270px;
+    height: 262px;
+    color: black;
+    }
+
+.text-ticket {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 33px;
+    color: black;
+    }
+.form-radio {
+    margin-top: 50px;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.amount {
+   display: flex;
+   flex-direction: column;
+   bottom: 320px;
+   left: 1310px;
+   margin-right: 20px;
+}
+
+.button-amount {
+    margin-top: 11px;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: black;
+
+}
+
+.calc {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 150px;
+    height: 46px;
+    border: 2px solid black;
+}
+
+.amount-button {
+    background-color: transparent;
+    background-repeat:no-repeat;
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    outline:none;   
+    color: black;
+    width: 40px;
+    font-size: larger;
+    text-align: left;
+}
+
+.amount-content {
+    margin-right: 230px;
+    padding-left: 30px;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.image-ticket {
+    float: left;
+}
+
+.buy {
+    width: 175px;
+    height: 50px;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 550px;
+    margin-right: 300px;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 0px;
+}
+.parallax {
+width: 100%;
+min-height: 400px;
+background: url(./assets/2560px-Richelieu_wing_-_Louvre.jpg) 100% 100% no-repeat;
+background-size: cover;
+background-attachment: fixed;
+}
+.contact-section {
+    padding-left: 0px;
+    width: 1440px;
+    height: 900px;
+    background: url(assets/contacts.jpg) 100% 100% no-repeat;
+}
+.contacts-base {
+    margin-top: 125px;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.contact-adress {
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
+
+.foot-content {
+    padding-left: 70px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1920px;
+    height: 300px;
+    color:  #FFFFFF;
+}
+
+.navigation-footer {
+    max-width: 400px;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.social-links {
+    height: 50px;
+    width: 336px;
+    margin-right: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-icon {
+    height: 50px;
+    width: 50px;
+    transition: all 0.3s;
+}
+
+.footer-icon:visited {
+    filter: invert(51%) sepia(30%) saturate(388%) hue-rotate(356deg) brightness(99%) contrast(88%);
+}
+
+.footer-icon:hover {
+    filter: invert(51%) sepia(30%) saturate(388%) hue-rotate(356deg) brightness(99%) contrast(88%);
+}
+
+.youtube {
+    background: url(./assets/frames/Youtube.svg) no-repeat;
+}
+
+.instagram {
+    background: url(./assets/frames/Instagram.svg) no-repeat;
+}
+
+.facebook {
+    background: url(./assets/frames/Facebook.svg) no-repeat;
+}
+
+.twitter {
+    background: url(./assets/frames/Twitter.svg) no-repeat;
+}
+
+.pinterest {
+    background: url(./assets/frames/Pinterest.svg) no-repeat;
+}
