@@ -207,37 +207,93 @@
           <div class="amount-content">
             <div class="ticket-type"><span class="text-ticket">Tikcet type</span>
               <div class="form-radio">
-                <input id="radio-1" type="radio" name="radio" value="1" checked>
-                <label for="radio-1">Permanent exhibition</label>
+                <input class="form-radio" id="radio-1" type="radio" name="radio" value="1" checked>
+                <label class="form-radio" for="radio-1">Permanent exhibition</label>
               </div>
               <div class="form-radio">
-                <input id="radio-2" type="radio" name="radio" value="1" checked>
-                <label for="radio-2">Temporary exhibition</label>
+                <input class="form-radio" id="radio-2" type="radio" name="radio" value="1" checked>
+                <label class="form-radio" for="radio-2">Temporary exhibition</label>
               </div>
               <div class="form-radio">
-                <input id="radio-3" type="radio" name="radio" value="1" checked>
-                <label for="radio-3">Combined Admission</label>
+                <input class="form-radio" id="radio-3" type="radio" name="radio" value="1" checked>
+                <label class="form-radio" for="radio-3">Combined Admission</label>
               </div>
             </div>
             <div class="amount"><span class="text-ticket">Amount</span>
               <div class="button-amount"> Basic 18+
                 <div class="calc">
-                  <button class="amount-button" type="button">-</button>
-                  <input class="amount-button" type="number" min="0" max="20" value="1">
-                  <button class="amount-button" type="button">+</button>
+                  <button class="amount-button" type="button"
+                    onclick="this.parentNode.querySelector('#num').stepDown()">-</button>
+                  <input class="amount-button" id="num" type="number" min="0" max="20" value="1">
+                  <button class="amount-button" type="button"
+                    onclick="this.parentNode.querySelector('#num').stepUp()">+</button>
                 </div>
               </div>
               <div class="button-amount"> Senior 65+
                 <div class="calc">
-                  <button class="amount-button" type="button">-</button>
-                  <input class="amount-button" type="number" min="0" max="20" value="1">
-                  <button class="amount-button" type="button">+</button>
+                  <button class="amount-button" type="button"
+                    onclick="this.parentNode.querySelector('#num').stepDown()">-</button>
+                  <input id="num" class="amount-button" type="number" min="0" max="20" value="1">
+                  <button class="amount-button" type="button"
+                    onclick="this.parentNode.querySelector('#num').stepUp()">+</button>
                 </div>
-                <p class="text-ticket">Total 220&euro;</p>
+                <div>
+                  <p class="text-ticket">Total 220&euro;</p>
+                </div>
               </div>
             </div>
           </div>
-          <button class="buy">Buy now</button>
+          <div class="button-amount">
+            <button class="buy">Buy now</button>
+          </div>
+        </div>
+        <div class="content-section buy-section">
+          <button class="close" type="button"></button>
+          <div class="buy-content">
+            <div class="buy-information">
+              <div class="logo-ticket">
+                <img class="img-logo-ticket" src="./assets/frames/logo.svg" alt="logo">
+                <h4 class="section-title-general booking-title">booking tickets</h4>
+                <p class="ticket-text">Tour to Louvre</p>
+              </div>
+              <div>
+                <form action="#" method="post" enctype="multipart/form-data">
+                  <div class="input-inform-block">
+                    <input class="time-date" type="date">
+                    <input class="time-date" type="time">
+                    <input class="input-text-information" type="text" placeholder="Name">
+                    <input class="input-text-information" type="email" placeholder="Email">
+                    <input class="input-text-information" type="tel" placeholder="Telephone">
+                    <input class="input-text-information" type="number" placeholder="Ticket type">
+                    <div class="entry-ticket">
+                      <p class="entry-text">Entry ticket</p>
+                      <div class="entry-container">
+                        <div class="booking-calc"> <span class="entry-span">Basic 18+ (20&euro;)</span>
+                          <div class="booking-buttons">
+                            <button class="amount-button booking-simbols minus" type="button"
+                              onclick="this.parentNode.querySelector('#num').stepDown()"></button>
+                            <input id="num" class="amount-button" type="number" min="0" max="20" value="1">
+                            <button class="amount-button booking-simbols plus" type="button"
+                              onclick="this.parentNode.querySelector('#num').stepUp()"></button>
+                          </div>
+                        </div>
+                        <div class="booking-calc"> <span class="entry-span">Senior 65+ (10&euro;)</span>
+                          <div class="booking-buttons">
+                            <button class="amount-button booking-simbols minus" type="button"
+                              onclick="this.parentNode.querySelector('#num').stepDown()"></button>
+                            <input id="num" class="amount-button" type="number" min="0" max="20" value="1">
+                            <button class="amount-button booking-simbols plus" type="button"
+                              onclick="this.parentNode.querySelector('#num').stepUp()"></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="buy-tickets"></div>
+          </div>
         </div>
       </div>
     </section>

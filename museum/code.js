@@ -1,3 +1,28 @@
+// Ticket Animation
+let buyPage = document.querySelector('.buy-section');
+
+function showBooking () {
+  console.log ('sd')
+  buyPage.classList.add('show-booking')
+  buyPage.classList.remove('close-booking');
+  buyPage.classList.remove('buy-section');
+}
+
+function hiddenBooking () {
+  console.log ('sd')
+  buyPage.classList.add('close-booking');
+  buyPage.classList.add('buy-section');
+  buyPage.classList.remove('show-booking');
+}
+
+document.querySelector('.buy').addEventListener('click',function (){
+  showBooking ();
+})
+
+document.querySelector('.close').addEventListener('click',function (){
+  hiddenBooking ();
+})
+
 
 // Slider
 

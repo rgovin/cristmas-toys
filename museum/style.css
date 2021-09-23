@@ -171,13 +171,13 @@ a:hover, a:active {
     right: 0;
   }
   to {
-    left: - 100%;
+    transform: translateX(-220%);
   }
 }
 
 @keyframes right {
   from {
-    left: 100%;
+    transform: translateX(170%);
   }
   to {
     right: 0;
@@ -537,8 +537,12 @@ background: #9D8665;
 }
 
 .ticket-type {
-    width: 270px;
-    height: 262px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 270px;
+    max-height: 220px;
     color: black;
     }
 
@@ -550,22 +554,37 @@ background: #9D8665;
     color: black;
     }
 .form-radio {
-    margin-top: 50px;
     font-family: Roboto;
     font-size: 22px;
     font-weight: 300;
     line-height: 26px;
     letter-spacing: 0em;
     text-align: left;
+    cursor: pointer;
+}
+.form-radio:hover {
+  cursor: pointer;
+}
 
+.amount-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 50px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .amount {
+   max-width: 150px;
+   max-height: 341px;
    display: flex;
-   flex-direction: column;
-   bottom: 320px;
-   left: 1310px;
-   margin-right: 20px;
+   flex-wrap: wrap;
+   justify-content: end;
 }
 
 .button-amount {
@@ -575,10 +594,7 @@ background: #9D8665;
     font-style: normal;
     font-weight: 300;
     line-height: 26px;
-    letter-spacing: 0em;
-    text-align: left;
     color: black;
-
 }
 
 .calc {
@@ -602,42 +618,219 @@ background: #9D8665;
     width: 40px;
     font-size: larger;
     text-align: left;
-}
-
-.amount-content {
-    margin-right: 230px;
-    padding-left: 30px;
-    display: inline-block;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    padding-left: 10px;
 }
 
 .image-ticket {
     float: left;
 }
+@keyframes booking-show {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes booking-close {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    position: fixed;
+  }
+}
+
+
+.show-booking {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -400px; 
+  margin-left: -600px;  
+  z-index: 1;
+  background-color: white;
+  animation: booking-show 0.5s ease-in-out;
+}
+
+.close-booking {
+  animation: booking-close 0s;
+}
 
 .buy {
+    position: absolute;
+    right: 0;
     width: 175px;
     height: 50px;
-    position: absolute;
-    margin-top: 50px;
-    margin-left: 550px;
-    margin-right: 300px;
     font-family: Roboto;
     font-size: 22px;
     font-weight: 300;
     line-height: 26px;
     letter-spacing: 2px;
     text-align: center;
-    border-radius: 0px;
+    color: white;
+    background-color: black;
+
+}
+
+.buy:hover {
+  cursor: pointer;
+}
+
+.buy-section {
+  position: fixed;
+  animation-fill-mode: forwards; 
+}
+
+.close {
+  width: 25px;
+  height: 25px;
+  margin: -45px 45px 0 0;
+  background: url(./assets/frames/Close.svg) no-repeat center;
+  display: block;
+  border: none;
+  cursor: pointer;
+  float: right;
+  
+}
+.buy-content {
+  margin: 0 auto;
+  display: flex;
+  max-width: 1060px;
+  max-height: 663px;
+
+}
+.buy-information {
+  padding: 0 60px;
+  max-width: 528px;
+}
+.buy-tickets {
+  padding: 60px;
+  border: 1px solid #000;
+  max-width: 528px;
+}
+
+.logo-ticket {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #710707;
+}
+
+.img-logo-ticket {
+  width: 85px;
+  height: 41px;
+  display: block;
+  padding: 0;
+  margin: 0 0 -15px 0;
+}
+
+.booking-title {
+  padding: 0;
+  margin: 0;
+  font-size: 44px;
+}
+
+.booking-title::after {
+  content: none;
+}
+
+.ticket-text {
+  padding: 0;
+  margin: 0 0 10px 0;
+  color: #710707;
+  font-size: 18px;
+}
+
+.input-inform-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px 10px;
+  margin-top: 55px;
+}
+
+.time-date {
+  width: 190px;
+  height: 40px;
+}
+
+.input-text-information {
+  width: 400px;
+  height: 40px;
+}
+
+.entry-ticket {
+  width: 100%;
+ 
+}
+
+
+.entry-text {
+  position: relative;
+  font-size: 18px;
+  color: #9d8665;
+  width: 100%;
+}
+
+.entry-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  
+}
+
+.entry-text:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #710707;
+}
+
+.entry-span {
+  display: inline-block;
+  padding-top: 3px;
+}
+
+.booking-calc {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.booking-buttons {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #000;
+}
+
+.booking-simbols {
+  width: 35px;
+  height: 27px;
+  color: white;
+}
+
+.plus{
+  background: url("./assets/frames/plus.svg") no-repeat center, linear-gradient(#000, #000);
+}
+.minus {
+  background: url("./assets/frames/minus.svg") no-repeat center, linear-gradient(#000, #000)
 }
 .parallax {
-width: 100%;
-min-height: 400px;
-background: url(./assets/2560px-Richelieu_wing_-_Louvre.jpg) 100% 100% no-repeat;
-background-size: cover;
-background-attachment: fixed;
+  width: 100%;
+  min-height: 400px;
+  background: url(./assets/2560px-Richelieu_wing_-_Louvre.jpg) 100% 100% no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .contact-section {
     padding-left: 0px;
