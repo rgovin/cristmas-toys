@@ -168,9 +168,9 @@ function updateButton () {
   function videoSpeedPlus () {
       video.playbackRate = video.playbackRate + 0.25;
       }
-//! Dont't work ChangeColor for volume and in time progress.
-//! Start volume is very hi 
-//! Changes is not accurate
+//TODO Dont't work ChangeColor for volume and in time progress.
+//TODO Start volume is very hi 
+//TODO Changes is not accurate
       function changeColor() {
         console.log ('sd')
         const value = this.value;
