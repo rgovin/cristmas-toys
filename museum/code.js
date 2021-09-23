@@ -1,5 +1,58 @@
-console.log ("Привет! Оценка - 30 баллов 1. воспроизвести исходное приложение 2. обязательный дополнительный функционалункционал \n 3. Дополнительный фукционал - слайдер (2 видео, через кнопки на плеере <-->)\n Скорость перемотки только на кнопках ")
 
+// Slider
+
+let items = document.querySelectorAll('.item');
+let currentItem = 0;
+let isEnable = true;
+
+function changeCurrentItem (n) {
+  currentItem =  (n + items.length) %  items.length
+}
+
+function hideItem (direction) {
+  isEnable = false;
+  items[currentItem].classList.add(direction);
+  items[currentItem].addEventListener('animationend', function () {
+      this.classList.remove('active', direction)
+  })
+}
+
+function showItem (direction) {
+  isEnable = false;
+  items[currentItem].classList.add('next', direction);
+  items[currentItem].addEventListener('animationend', function () {
+      this.classList.remove('next', direction);
+      this.classList.add ('active');
+      isEnable = true;
+  })
+}
+
+function previousItem (n) {
+  hideItem ('to-right');
+  changeCurrentItem (n - 1);
+  showItem ('from-left');
+}
+
+function nextItem (n) {
+  hideItem ('to-left');
+  changeCurrentItem (n + 1);
+  showItem ('from-right');
+}
+
+document.querySelector('.control.left').addEventListener('click',function (){
+  if (isEnable) {
+    previousItem (currentItem) 
+  }
+})
+
+document.querySelector('.control.right').addEventListener('click',function (){
+  if (isEnable) {
+    nextItem (currentItem) 
+  }
+})
+
+
+// Video
 document.onkeydown = function(e){
   if (e.keyCode == 32) e.preventDefault();
 };
@@ -115,6 +168,14 @@ function updateButton () {
   function videoSpeedPlus () {
       video.playbackRate = video.playbackRate + 0.25;
       }
+//! Dont't work ChangeColor for volume and in time progress.
+//! Start volume is very hi 
+//! Changes is not accurate
+      function changeColor() {
+        console.log ('sd')
+        const value = this.value;
+        this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
+      }
 
 
 // Hook up eventsListener
@@ -128,16 +189,19 @@ player.addEventListener ('click', changeIcon);
 video.addEventListener ('play', updateButton);
 video.addEventListener ('pause', updateButton);
 //slider
-minus.addEventListener ('click', videoSlider);
-plus.addEventListener ('click', videoSlider);
+// minus.addEventListener ('click', videoSlider);
+// plus.addEventListener ('click', videoSlider);
 
 // Volume and Time range
 
 volume.addEventListener('change', handleRange);
 volume.addEventListener('mousemove', handleRange);
 
-progress.addEventListener ('click', changeProgress);
+progress.addEventListener('input', changeColor);
+progress.addEventListener('change', changeColor);
+
 video.addEventListener('timeupdate', rangeMove);
+
 
 // Volume turn
 
