@@ -26,6 +26,11 @@ a:hover, a:active {
     color: #9D8665;
 }
 
+input,
+select {
+  outline: none;
+}
+
 .section {
     width: 100%;
 }
@@ -579,6 +584,8 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input[type="date"]
+
 .amount {
    max-width: 150px;
    max-height: 341px;
@@ -694,12 +701,12 @@ input[type="number"]::-webkit-inner-spin-button {
   
 }
 .buy-content {
+  display: flex;
+  flex-wrap: wrap;
   font-family: roboto;
   margin: 0 auto;
-  display: flex;
   max-width: 1060px;
   max-height: 663px;
-
 }
 .buy-information {
   padding: 0 60px;
@@ -747,9 +754,45 @@ input[type="number"]::-webkit-inner-spin-button {
   margin-top: 55px;
 }
 
+.name {
+  padding-left: 40px;
+  background: url(./assets/frames/name.svg) left 15px top 11px no-repeat;
+}
+.email {
+  padding-left: 40px;
+  background: url(./assets/frames/email.svg) left 15px top 11px no-repeat;
+}
+
+.telephone {
+  padding-left: 40px;
+  background: url(./assets/frames/tel.svg) left 15px top 5px no-repeat;
+}
+
+.ticket {
+  padding-left: 40px;
+  background: url(./assets/frames/TicketTipe.svg) left 15px top 11px no-repeat, url('./assets/frames/arrowDown.svg') no-repeat right 15px center;
+  appearance: none;
+}
+
+input::placeholder {
+  color: black;
+}
+
 .time-date {
   width: 190px;
   height: 40px;
+}
+
+.select-date {
+  padding-left: 40px;
+  background: url(./assets/frames/date.svg) no-repeat left 15px center, url('./assets/frames/arrowDown.svg') no-repeat right 15px center;;
+  appearance: none;
+}
+
+.select-time {
+  padding-left: 40px;
+  background: url(./assets/frames/Time.svg) no-repeat left 15px center,  url('./assets/frames/arrowDown.svg') no-repeat right 15px center;;
+  appearance: none;
 }
 
 .input-text-information {
@@ -758,7 +801,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .entry-ticket {
-  padding: 0 0 25px 0;
+  padding: 0 15px 25px 15px;
   border: 1px solid #000;
   width: 100%;
 }
@@ -890,6 +933,10 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 18px;
   text-align: center;
 }
+.booking-black-number::-webkit-outer-spin-button,
+.booking-black-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 .basic {
   display: flex;
   justify-content: space-between;
@@ -972,17 +1019,18 @@ input[type="number"]::-webkit-inner-spin-button {
   margin-top: 5px;
 }
 .input-expiration-date {
+  padding-left: 10px;
   width: 100px;
   height: 35px;
-  padding: 0;
   margin: -5px 0 0 0;
 }
 .input-expiration-year {
+  padding-left: 10px;
   width: 100px;
   height: 35px;
-  padding: 0;
   margin: -5px 0 0 15px;
 }
+
 .text-name {
   padding: 0;
   margin-top: 5px;
