@@ -581,10 +581,16 @@ background: #9D8665;
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  margin: 0;
 }
 
-input[type="date"]
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url(./assets/frames/arrowDown.svg) no-repeat right 5px center;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: url(./assets/frames/arrowDown.svg) no-repeat right 4px center;
+}
+
 
 .amount {
    max-width: 150px;
@@ -686,6 +692,7 @@ input[type="date"]
 }
 
 .buy-section {
+  position: fixed;
   animation-fill-mode: forwards; 
 }
 
@@ -785,14 +792,12 @@ input::placeholder {
 
 .select-date {
   padding-left: 40px;
-  background: url(./assets/frames/date.svg) no-repeat left 15px center, url('./assets/frames/arrowDown.svg') no-repeat right 15px center;;
-  appearance: none;
+  background: url(./assets/frames/date.svg) no-repeat left 15px top 10px, url(./assets/frames/arrowDown.svg) no-repeat right 5px center;;
 }
 
 .select-time {
   padding-left: 40px;
-  background: url(./assets/frames/Time.svg) no-repeat left 15px center,  url('./assets/frames/arrowDown.svg') no-repeat right 15px center;;
-  appearance: none;
+  background: url(./assets/frames/Time.svg) no-repeat left 15px top 10px, url(./assets/frames/arrowDown.svg) no-repeat right 5px center;;
 }
 
 .input-text-information {
@@ -1120,7 +1125,7 @@ input::placeholder {
     padding-left: 0px;
     width: 1440px;
     height: 900px;
-    background: url(assets/contacts.jpg) 100% 100% no-repeat;
+    background: url(assets/contacts.png) 100% 100% no-repeat;
 }
 .contacts-base {
     margin-top: 125px;
@@ -1141,28 +1146,63 @@ input::placeholder {
 
 
 .foot-content {
-    padding-left: 70px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1920px;
-    height: 300px;
+    max-width: 1440px;
+    height: 265px;
     color:  #FFFFFF;
 }
 
+.footer-logo {
+  display: inline-block;
+  margin: 80px 0 0 0 ;
+  background: url(./assets/frames/Frame.svg) no-repeat left top 7px;
+  font-family: Forum;
+  font-size: 28px;
+  line-height: 50px;   
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding-left: 70px;
+  transition: all 0.3s;
+}
+
+.footer-logo:hover {
+  filter: invert(51%) sepia(30%) saturate(388%) hue-rotate(356deg) brightness(99%) contrast(88%);
+}
+
 .navigation-footer {
-    max-width: 400px;
+    display: inline-block;
+    width: 360px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    text-align: left;
+    justify-content: space-between;
+    font-family: roboto;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 50px;
+    letter-spacing: 2px;
+    padding-left: 0;
+    padding-right: 0px;
+    margin: -55px 0 0 25% ;
+}
+
+.navigation-footer li {
+  height: 40px;
+  list-style: none;
+}
+.navigation-footer li:nth-child(n+4) {
+  padding-left: 130px;
 }
 
 .social-links {
+  display: inline-block;
+    margin: -55px 0 0 0;
     height: 50px;
     width: 336px;
-    margin-right: 250px;
     display: flex;
     justify-content: space-between;
+    float: right;
 }
 
 .footer-icon {
@@ -1180,26 +1220,64 @@ input::placeholder {
 }
 
 .youtube {
-    background: url(./assets/frames/Youtube.svg) no-repeat;
+    display: block;
+    border: 2px solid rgb(95, 94, 94);
+    border-radius: 50%;
+    background: url(./assets/frames/youtube2.svg) no-repeat center;
 }
 
 .instagram {
-    background: url(./assets/frames/Instagram.svg) no-repeat;
+    display: block;
+    border: 2px solid rgb(95, 94, 94);
+    border-radius: 50%;
+    background: url(./assets/frames/instagram.svg) no-repeat left 12px center;
 }
 
 .facebook {
-    background: url(./assets/frames/Facebook.svg) no-repeat;
+    display: block;
+    border: 2px solid rgb(95, 94, 94);
+    border-radius: 50%;
+    background: url(./assets/frames/facebook.svg) no-repeat center;
 }
 
 .twitter {
-    background: url(./assets/frames/Twitter.svg) no-repeat;
+    display: block;
+    border: 2px solid rgb(95, 94, 94);
+    border-radius: 50%;
+    background: url(./assets/frames/twitter.svg) no-repeat  center;
 }
 
 .pinterest {
-    background: url(./assets/frames/Pinterest.svg) no-repeat;
+    display: block;
+    border: 2px solid rgb(95, 94, 94);
+    border-radius: 50%;
+    background: url(./assets/frames/pinterest.svg) no-repeat center;
 }
 
 .tours {
   width: 100%;
   min-height:100vh;
+}
+
+
+.foot-information {
+  height: 120px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: roboto;
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.inform-dark-section {
+  border-top: 3px solid #666666;
+}
+
+.year {
+}
+.github {
+}
+.username {
 }

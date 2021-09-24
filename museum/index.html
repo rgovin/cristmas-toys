@@ -259,12 +259,8 @@
               <div>
                 <form action="#" method="post" enctype="multipart/form-data">
                   <div class="input-inform-block">
-                    <select class="time-date select-date" type="date">
-                      <option value="">Date</option>
-                    </select>
-                    <select class="time-date select-time" type="time">
-                      <option value="">Time</option>
-                    </select>
+                    <input class="time-date select-date" type="text" placeholder="Date" onfocus="(this.type='date')">
+                    <input class="time-date select-time" type="text" placeholder="Time" onfocus="(this.type='time')">
                     <input class="input-text-information name" type="text" placeholder="Name">
                     <input class="input-text-information email" type="email" placeholder="Email">
                     <input class="input-text-information telephone" type="tel" placeholder="Telephone">
@@ -338,7 +334,7 @@
                  <p class="text-expiration">Expiration date</p>
                  <div class="expiration">
                    <input class="input-expiration-date" type="number" min="01" max="12" value="03">
-                   <input class="input-expiration-year" type="number" min="2000" max="2100" value="03" value="2024">
+                   <input class="input-expiration-year" type="number" min="2000" max="2100" value="2024" value="2024">
                  </div>
                  <p class="text-name">Cardholder name</p>
                  <input class="input-name" type="text">
@@ -379,10 +375,9 @@
   </main>
   <footer class="section dark-section">
     <section class="foot-content">
-      <a href="#" class="logo footer-logo">Louvre</a>
-      <nav>
-        <ul class="navigation navigation-footer">
-          <li><a href="#welcome">Welcome</a></li>
+      <a href="#" class="footer-logo">Louvre</a>
+      <nav >
+        <ul class="navigation-footer">
           <li><a href="#visiting">Visiting</a></li>
           <li><a href="#explore"> Explore</a></li>
           <li><a href="#video">Video</a> </li>
@@ -398,6 +393,13 @@
         <a class="footer-icon twitter" href="http://twitter.com/museelouvre" target="_blank"></a>
         <a class="footer-icon pinterest" href="https://www.pinterest.fr/museedulouvre/" target="_blank"></a>
       </div>
+    </section>
+    <section class="section dark-section inform-dark-section">
+      <section class="foot-information content-section">
+        <div class="year">&copy; 2021</div>
+        <div class="github">The Rolling Scopes School</div>
+        <div class="username">Todd89</div>
+      </section>
     </section>
   </footer>
   <script src="./code.js"></script>
