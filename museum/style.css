@@ -511,12 +511,14 @@ background: #9D8665;
   overflow-y: hidden;
 }
 .picture-inner-container {
-  max-height: 2850px;
+  height: 3000px;
   display: flex;
-  flex-direction:column-reverse;
+  flex-direction:column;
   flex-wrap: wrap;
+  justify-content: baseline;
   gap: 30px 20px;
-  
+  align-self: baseline;
+  justify-self: baseline;
 }
 
 .image-gallery {
