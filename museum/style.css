@@ -520,11 +520,16 @@ background: #9D8665;
   align-self: baseline;
   justify-self: baseline;
 }
+.picture-inner-container img:first-child {
+  margin-top: 25px;
+}
 
+.picture-inner-container img:nth-child(11) {
+  margin-top: 25px;
+}
 .image-gallery {
   display: block;
 }
-
 
 .section-title-ticket{
     font-family: Forum;
