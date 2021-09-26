@@ -41,7 +41,7 @@ select {
  
 .content-section {
     margin: 0 auto;
-    padding-top: 75px;
+    padding-top: 85px;
     padding-bottom: 75px;
     max-width: 1440px;
 }
@@ -52,19 +52,23 @@ select {
     align-items: center;
     justify-content: space-between;
     max-width: 1440px;
-    height: 150px;
+    height: 140px;
     color:  #FFFFFF;
 } 
+.logo-heading {
+  font-weight: 500;
+}
 
 .logo {
     background: url(./assets/frames/Frame.svg) no-repeat left top;
     font-family: Forum;
     font-size: 28px;
+    font-weight: 500;
     line-height: 50px;   
     letter-spacing: 5px;
     text-transform: uppercase;
+    padding-top: 2px;
     padding-left: 70px;
-    margin-left: 17%;
     transition: all 0.3s;
 }
 
@@ -74,6 +78,7 @@ select {
 
 
 .navigation {
+  border: 1px solid rgb(0, 0, 0);
     display: flex;
     justify-content: right;
     align-content: center;
@@ -88,7 +93,7 @@ select {
 
 .navigation li {
   list-style: none;
-  padding: 0 20px;
+  padding: 0 31px;
 }
 
 .navigation li:last-child {
@@ -97,8 +102,8 @@ select {
 }
 
 .welcome-section {
- padding: 0;
- margin-bottom: 40px;
+  padding: 0;
+  margin-bottom: 40px;
 }
 
 .welcome {
@@ -106,12 +111,12 @@ select {
     z-index: 0;
     margin: 0 auto;
     max-width: 1440px;
-    max-height: 750px;
+    max-height: 770px;
 }
 
 .item-container {
   width: 1440px;
-  height: 750px;
+  height: 770px;
   overflow: hidden;
 }
 
@@ -135,32 +140,34 @@ select {
 .welcome-interactive {
   position: absolute;
   z-index: 1;
-  top: 320px;
+  top: 300px;
 }
 
 .controls {
   position: absolute;
   z-index: 1;
   width: 600px;
-  height: 120px;
+  height: 110px;
   right: 0;
-  bottom: -40px;
+  bottom: -30px;
   display: flex;
   justify-content: space-around;
   align-items:center;
   background-color: black;
   color: white;
+  padding-top: 15px;
 }
 
 
 .conrols-numbers {
-  margin-left: 22px;
-  font-size: 20px;
+  margin-left: 45px;
+  font-size: 22px;
+  letter-spacing: 2px;
 }
 
 .controls-arrows {
   margin-bottom: 10px;
-  margin-right: 15px;
+  margin-right: 40px;
 }
 
 .img-control {
@@ -207,8 +214,6 @@ select {
   animation-name: right;
 }
 
-
-
 .section-title {
     font-family: 'Forum', cursive;
     font-size: 80px;
@@ -230,7 +235,7 @@ select {
 .discover {
     width: 360px;
     height: 75px;
-    margin-top: 70px;
+    margin-top: 50px;
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     font-style: normal;
@@ -265,7 +270,7 @@ background: #9D8665;
 .section-title-general:after {
     content: "";
     position: absolute;
-    bottom: -25px;
+    bottom: -24px;
     left: 0;
     right: 0;
     width: 100%;
@@ -277,6 +282,9 @@ background: #9D8665;
     width: 1440px;
     height: 997px;
     margin-top: 50px;
+    margin-bottom: -20px;
+    padding-top: 30px;
+    padding-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -351,17 +359,21 @@ background: #9D8665;
 }
 
 .section-explore {
+    height: 865px;
     display: flex;
     justify-content: space-between;
     padding-right: 240px;
+    padding-top: 100px;
 }
 
 .block-explore {
     width: 720px;
     height: 720px;
+    
 }
 
-.picture-expore {
+.picture-explore {
+    margin-top: -15px;
     width: 720px;
     height: 700px;
 }
@@ -379,11 +391,16 @@ background: #9D8665;
 }
 
 .text-explore-first { 
-    margin-top: 75px;
+    margin-top: 105px;
+}
+
+.explore-section-title-general {
+  color: white;
+  margin-top: -30px;
 }
 
 .explore-section-title-general:after {
-    width: 620px;
+    width: 650px;
 }
 
 .span-gold {
@@ -391,7 +408,8 @@ background: #9D8665;
 }
 
 .video-section {
-    position: relative;
+  padding-top: 50px;
+  position: relative;
 }
 .video-information {
   max-width: 1440px;
@@ -429,8 +447,8 @@ background: #9D8665;
 
 .button-play {
     position: absolute;
-    bottom: calc(50% );
-    left: calc(50% - 120px);
+    bottom: calc(50% + 20px);
+    left: calc(50% - 130px);
     background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -447,7 +465,7 @@ background: #9D8665;
     background-color: #000;
     bottom: 120px;
     Width:1440px;
-    Height: 85px;
+    Height: 105px;
 }
 
 .buttons-tool {
@@ -507,9 +525,10 @@ background: #9D8665;
 
 
 .picture-container {
-  max-height: 2035px;
+  max-height: 1900px;
   overflow-y: hidden;
 }
+
 .picture-inner-container {
   height: 3000px;
   display: flex;
@@ -529,6 +548,10 @@ background: #9D8665;
 }
 .image-gallery {
   display: block;
+}
+
+.ticket-section {
+  padding-top: 70px;
 }
 
 .section-title-ticket{
@@ -555,6 +578,7 @@ background: #9D8665;
     justify-content: space-between;
     max-width: 270px;
     max-height: 220px;
+    margin-bottom: 30px;
     color: black;
     }
 
@@ -566,6 +590,7 @@ background: #9D8665;
     color: black;
     }
 .form-radio {
+    margin-bottom: -10px ;
     font-family: Roboto;
     font-size: 22px;
     font-weight: 300;
@@ -573,9 +598,33 @@ background: #9D8665;
     letter-spacing: 0em;
     text-align: left;
     cursor: pointer;
+    user-select: none;
 }
 .form-radio:hover {
   cursor: pointer;
+}
+input[type=radio] {
+	display: none;
+}
+.form-radio label {
+	display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  line-height: 18px;
+}
+
+.form-radio label:before {
+	content: "";
+	display: inline-block;
+  left: 0;
+	width: 17px;
+	height: 17px;
+	position: absolute;
+	background: url(./assets/frames/Ellipse1.svg) 0 0 no-repeat;
+}
+
+.form-radio input[type=radio]:checked + label:before {
+	background: url(./assets/frames/Group.svg) 0 0 no-repeat;
 }
 
 .amount-content {
@@ -601,14 +650,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .amount {
    max-width: 150px;
-   max-height: 341px;
+   height: 380px;
    display: flex;
    flex-wrap: wrap;
    justify-content: end;
 }
 
 .button-amount {
-    margin-top: 11px;
+    margin-top: 5px;
     font-family: Roboto;
     font-size: 22px;
     font-style: normal;
@@ -1129,21 +1178,22 @@ input::placeholder {
   background-attachment: fixed;
 }
 .contact-section {
+    margin-top: -10px;
+    margin-bottom: 70px;
     padding-left: 0px;
     width: 1440px;
     height: 900px;
     background: url(assets/contacts.png) 100% 100% no-repeat;
 }
 .contacts-base {
-    margin-top: 125px;
+    margin-top: 100px;
     font-family: Roboto;
-    font-size: 22px;
     font-style: normal;
     font-weight: 300;
     line-height: 26px;
     letter-spacing: 0em;
     text-align: left;
-
+    font-size: 24px;
 }
 
 .contact-adress {
@@ -1151,6 +1201,10 @@ input::placeholder {
     padding-top: 10px;
 }
 
+.musee-uppercase {
+  padding-top: 10px;
+  margin-bottom: 45px;
+}
 
 .foot-content {
     margin: 0 auto;
@@ -1179,19 +1233,20 @@ input::placeholder {
 .navigation-footer {
     display: inline-block;
     width: 360px;
-    height: 130px;
+    height: 140px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    font-family: roboto;
-    font-weight: 200;
-    font-size: 22px;
-    line-height: 50px;
     letter-spacing: 2px;
     padding-left: 0;
     padding-right: 0px;
     margin: -55px 0 0 25% ;
+    font-family: roboto;
+    font-weight: 200;
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 50px;
 }
 
 .navigation-footer li {
@@ -1203,7 +1258,7 @@ input::placeholder {
 }
 
 .social-links {
-  display: inline-block;
+   display: inline-block;
     margin: -55px 0 0 0;
     height: 50px;
     width: 336px;
@@ -1268,7 +1323,9 @@ input::placeholder {
 
 
 .foot-information {
-  height: 120px;
+  max-width: 1440px;
+  height: 125px;
+  margin: 0 auto;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -1276,15 +1333,13 @@ input::placeholder {
   font-family: roboto;
   font-size: 22px;
   font-weight: 200;
+  letter-spacing: 2px;
 }
 
 .inform-dark-section {
   border-top: 3px solid #666666;
 }
 
-.year {
-}
-.github {
-}
-.username {
+.empty {
+  position: fixed;
 }

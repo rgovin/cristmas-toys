@@ -3,7 +3,9 @@
 
 <head>
   <title>Museum</title>
-  <meta http-equiv="content-type" content="text/javascript" charset="utf-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=0">
   <link rel="icon" href="./assets/frames/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -13,10 +15,10 @@
 
 <body>
   <header class="section dark-section" id="welcome">
-    <section class="head-content content-section">
-      <div>
+    <section class="head-content">
+      <h1 class="logo-heading">
         <a href="#" class="logo">Louvre</a>
-      </div>
+      </h1>
       <nav>
         <ul class="navigation">
           <li><a href="#visiting">Visiting</a></li>
@@ -83,7 +85,7 @@
         <div class="virtual-tour">
           <a class="link-virtual-tour" href="./tours/tour2.html" target="_blank">
             <img src="assets/Rectangle.jpg" alt="Rectangle" class="image-tour">
-            <h3 class="text-tour">Royal place</h3>
+            <h3 class="text-tour">Royal palace</h3>
             <p class="text-tour-add">360&deg; Virtual tour</p>
             <p class="text-tour-google">Google street panorama view</p>
           </a>
@@ -95,7 +97,7 @@
           </a>
           <a class="link-virtual-tour" href="./tours/tour4.html" target="_blank">
             <img src="assets/Rectangle-3.jpg" alt="Rectangle" class="image-tour">
-            <h3 class="text-tour">Colonade perrault</h3>
+            <h3 class="text-tour">Colonnade perrault</h3>
             <p class="text-tour-add">360&deg; Virtual tour</p>
             <p class="text-tour-google">Google street panorama view</p>
           </a>
@@ -107,7 +109,7 @@
           </a>
           <a class="link-virtual-tour" href="./tours/tour6.html" target="_blank">
             <img src="assets/Mona-Liza.jpg" alt="Rectangle" class="image-tour">
-            <h3 class="text-tour">Mono Liza</h3>
+            <h3 class="text-tour">Mona Lisa</h3>
             <p class="text-tour-add">360&deg; Virtual tour</p>
             <p class="text-tour-google">Google street panorama view</p>
           </a>
@@ -123,7 +125,7 @@
     <section class="section dark-section" id="explore">
       <div class="content-section section-explore">
         <div class="block-explore">
-          <h2 class="section-title-general explore-section-title-general">Picture-expore</h2>
+          <h2 class="section-title-general explore-section-title-general">Picture-explore</h2>
           <p class="text-explore text-explore-first">Las Meninas is a 1656 painting by Diego Velázquez, the leading
             artist of the Spanish Golden Age.</p>
           <p class="text-explore">It was cleaned in 1984 to remove a <span class="span-gold">"yellow veil"</span> of
@@ -131,7 +133,9 @@
           <p class="text-explore">The cleaning provoked furious protests, not because the picture had been damaged in
             any way, but because it looked different.</p>
         </div>
-        <img src="assets/picture.png" alt="explore-picture" class="picture-explore">
+        <div class="picture-explore-container">
+          <img src="assets/picture.png" alt="explore-picture" class="picture-explore">
+        </div>
       </div>
     </section>
     <section class="section">
@@ -147,8 +151,7 @@
         <div><button class="button-play toggle"><img src="assets/frames/video-frame.svg" alt="video-button"></button>
         </div>
         <div class="tool-bar">
-          <button class="buttons-tool toggle"><img id="play" max-width="220" max-height="220"
-              src="assets/frames/Frame-1.svg" alt="button"></button>
+          <button class="buttons-tool toggle"><img id="play" src="assets/frames/Frame-1.svg" alt="button"></button>
           <input class="progress" name="time" type="range" value="0" step="0.01">
           <button class="buttons-tool volume-turn"><img src="assets/frames/button(1).svg" alt="button"></button>
           <input class="volume" name="volume" type="range" value="0.3" min="0" max="1" step="0.05">
@@ -156,17 +159,17 @@
         </div>
         <div class="video-slider">
           <iframe width="450" height="250" src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0"
-            title="YouTube video player" frameborder="0" loading="lazy"
+            title="YouTube video player"  loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
           </iframe>
           <iframe width="450" height="250" src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
-            title="YouTube video player" frameborder="0" loading="lazy"
+            title="YouTube video player"  loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen >
           </iframe>
           <iframe width="450" height="250" src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
-            title="YouTube video player" frameborder="0" loading="lazy"
+            title="YouTube video player"  loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen >
           </iframe>
@@ -177,7 +180,7 @@
       </div>
     </section>
     <section class="section dark-section">
-      <div class="content-section gallery-section">
+      <div class="content-section gallery-section" id="gallery">
         <h2 class="section-title-general gallery-title">Art gallery</h2>
         <div class="picture-container">
           <div class="picture-inner-container">
@@ -206,40 +209,40 @@
         <div class="radio-image-ticket">
           <img class="image-ticket" src="assets/ticket.jpg" alt="ticket">
           <div class="amount-content">
-            <div class="ticket-type"><span class="text-ticket">Tikcet type</span>
+            <div class="ticket-type"><span class="text-ticket">Tikcet Type</span>
               <div class="form-radio">
                 <input class="form-radio" id="radio-1" type="radio" name="radio" value="1" checked>
                 <label class="form-radio" for="radio-1">Permanent exhibition</label>
               </div>
               <div class="form-radio">
-                <input class="form-radio" id="radio-2" type="radio" name="radio" value="1" checked>
+                <input class="form-radio" id="radio-2" type="radio" name="radio" value="2">
                 <label class="form-radio" for="radio-2">Temporary exhibition</label>
               </div>
               <div class="form-radio">
-                <input class="form-radio" id="radio-3" type="radio" name="radio" value="1" checked>
+                <input class="form-radio" id="radio-3" type="radio" name="radio" value="3">
                 <label class="form-radio" for="radio-3">Combined Admission</label>
               </div>
             </div>
             <div class="amount"><span class="text-ticket">Amount</span>
               <div class="button-amount"> Basic 18+
                 <div class="calc">
-                  <button class="amount-button" type="button"
-                    onclick="this.parentNode.querySelector('#num').stepDown()">-</button>
-                  <input class="amount-button" id="num" type="number" min="0" max="20" value="1">
-                  <button class="amount-button" type="button"
-                    onclick="this.parentNode.querySelector('#num').stepUp()">+</button>
+                  <button  class="amount-button" type="button"
+                    onclick="this.parentNode.querySelector('#num1').stepDown()">-</button>
+                  <input id="num1" class="amount-button"  type="number" min="0" max="20" value="1">
+                  <button  class="amount-button" type="button"
+                    onclick="this.parentNode.querySelector('#num1').stepUp()">+</button>
                 </div>
               </div>
               <div class="button-amount"> Senior 65+
                 <div class="calc">
                   <button class="amount-button" type="button"
-                    onclick="this.parentNode.querySelector('#num').stepDown()">-</button>
-                  <input id="num" class="amount-button" type="number" min="0" max="20" value="1">
+                    onclick="this.parentNode.querySelector('#num2').stepDown()">-</button>
+                  <input id="num2"  class="amount-button" type="number" min="0" max="20" value="1">
                   <button class="amount-button" type="button"
-                    onclick="this.parentNode.querySelector('#num').stepUp()">+</button>
+                    onclick="this.parentNode.querySelector('#num2').stepUp()">+</button>
                 </div>
                 <div>
-                  <p class="text-ticket">Total 220&euro;</p>
+                  <p class="text-ticket">Total &euro;220</p>
                 </div>
               </div>
             </div>
@@ -273,20 +276,20 @@
                       <div class="entry-container">
                         <div class="booking-calc"> <span class="entry-span">Basic 18+ (20&euro;)</span>
                           <div class="booking-buttons">
-                            <button class="amount-button booking-simbols minus" type="button"
-                              onclick="this.parentNode.querySelector('#num').stepDown()"></button>
-                            <input id="num" class="amount-button" type="number" min="0" max="20" value="1">
-                            <button class="amount-button booking-simbols plus" type="button"
-                              onclick="this.parentNode.querySelector('#num').stepUp()"></button>
+                            <button  class="amount-button booking-simbols minus" type="button"
+                              onclick="this.parentNode.querySelector('#num3').stepDown()"></button>
+                            <input id="num3" class="amount-button" type="number" min="0" max="20" value="1">
+                            <button  class="amount-button booking-simbols plus" type="button"
+                              onclick="this.parentNode.querySelector('#num3').stepUp()"></button>
                           </div>
                         </div>
                         <div class="booking-calc"> <span class="entry-span">Senior 65+ (10&euro;)</span>
                           <div class="booking-buttons">
-                            <button class="amount-button booking-simbols minus" type="button"
-                              onclick="this.parentNode.querySelector('#num').stepDown()"></button>
-                            <input id="num" class="amount-button" type="number" min="0" max="20" value="1">
+                            <button  class="amount-button booking-simbols minus" type="button"
+                              onclick="this.parentNode.querySelector('#num4').stepDown()"></button>
+                            <input id="num4" class="amount-button" type="number" min="0" max="20" value="1">
                             <button class="amount-button booking-simbols plus" type="button"
-                              onclick="this.parentNode.querySelector('#num').stepUp()"></button>
+                              onclick="this.parentNode.querySelector('#num4').stepUp()"></button>
                           </div>
                         </div>
                       </div>
@@ -311,14 +314,14 @@
              <div class="booking-information-container">
                <div class="basic">
                 <div class="black-number-and-text">
-                  <input id="num" class="booking-black-number" type="number" min="0" max="20" value="2">
+                  <input class="booking-black-number" type="number" min="0" max="20" value="2">
                    <div class="text-basic">Basic (20&euro;)</div>
                 </div>
                  <div class="number-basic">40&euro;</div>
                </div>
                <div class="senior">
                 <div class="black-number-and-text">
-                  <input id="num" class="booking-black-number" type="number" min="0" max="20" value="2">
+                  <input class="booking-black-number" type="number" min="0" max="20" value="2">
                   <div class="text-senior">Senior (10&euro;)</div>
                 </div>
                 <div class="number-senior">20&euro;</div>
@@ -335,7 +338,7 @@
                  <p class="text-expiration">Expiration date</p>
                  <div class="expiration">
                    <input class="input-expiration-date" type="number" min="01" max="12" value="03">
-                   <input class="input-expiration-year" type="number" min="2000" max="2100" value="2024" value="2024">
+                   <input class="input-expiration-year" type="number" min="2000" max="2100" value="2024">
                  </div>
                  <p class="text-name">Cardholder name</p>
                  <input class="input-name" type="text">
@@ -358,7 +361,8 @@
       </div>
     </section>
     <section class="section">
-      <div class="content-section parallax">
+      <h2 class="empty">_</h2>
+      <div class="parallax">
       </div>
     </section>
     <section class="section" id="contacts">
@@ -366,7 +370,7 @@
         <h2 class="section-title-general">Contacts</h2>
         <div class="contacts-base">
           <h3>Palais Royal</h3>
-          <h3>Musee du Logit Luvre</h3>
+          <h3 class="musee-uppercase">Musee du Louvre</h3>
           <p class="contact-adress">adress: 75001 Paris, France </p>
           <p class="contact-phone">phone: +33(0) 1 40 20 50 50 </p>
           <p class="contact-mail"> mail: info@louvre.fr</p>
@@ -376,7 +380,7 @@
   </main>
   <footer class="section dark-section">
     <section class="foot-content">
-      <a href="#" class="footer-logo">Louvre</a>
+      <h2 class="logo-heading"><a href="#" class="footer-logo">Louvre</a></h2>
       <nav >
         <ul class="navigation-footer">
           <li><a href="#visiting">Visiting</a></li>
@@ -396,7 +400,9 @@
       </div>
     </section>
     <section class="section dark-section inform-dark-section">
-      <section class="foot-information content-section">
+      <h2 class="empty">_</h2>
+      <section class="foot-information">
+        <h2 class="empty">_</h2>
         <div class="year">&copy; 2021</div>
         <div class="github">The Rolling Scopes School</div>
         <div class="username">Todd89</div>
@@ -405,3 +411,4 @@
   </footer>
   <script src="./code.js"></script>
 </body>
+
