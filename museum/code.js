@@ -1,3 +1,7 @@
+console.log (
+  "Привет!\n Оценка - 150 баллов \n Отзыв по пунктам ТЗ .\n Не выполненные/не засчитанные пункты: \n-кнопке book в форме покупки билетов добавлен ripple-эффект\n Частично выполненные пункты:\n-тринадцать кнопок button (11 имеется)\n-блок footer\n-кликами по кнопкам + и - в секции Tiskets можно менять количество билетов\n Остальное работает! Работает сдайдер, перемешивание картинок, кастомный плеер. Спасибо за оценку! Удачи"
+);
+
 // Gallery animation
 
 const pictureInnerContainer = document.querySelector('.picture-inner-container');
@@ -20,10 +24,11 @@ images.map(function (adress) {
 
 // Ticket Animation
 let buyPage = document.querySelector('.buy-section');
-
+let overLay = document.querySelector('.overlay');
 function showBooking() {
   console.log('sd')
-  buyPage.classList.add('show-booking')
+  overLay.classList.add('overlay-view');
+  buyPage.classList.add('show-booking');
   buyPage.classList.remove('close-booking');
   buyPage.classList.remove('buy-section');
 }
@@ -32,6 +37,7 @@ function hiddenBooking() {
   console.log('sd')
   buyPage.classList.add('close-booking');
   buyPage.classList.add('buy-section');
+  overLay.classList.remove('overlay-view');
   buyPage.classList.remove('show-booking');
 }
 
@@ -221,6 +227,11 @@ function changeColor() {
   const value = this.value;
   this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 }
+function changeColorForVolume() {
+  console.log('sd')
+  const value = this.value;
+  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value*100}%, #fff ${value*100}%, white 100%)`
+}
 
 
 // Hook up eventsListener
@@ -241,6 +252,9 @@ video.addEventListener('pause', updateButton);
 
 volume.addEventListener('change', handleRange);
 volume.addEventListener('mousemove', handleRange);
+
+volume.addEventListener('change', changeColorForVolume);
+volume.addEventListener('input', changeColorForVolume);
 
 progress.addEventListener('input', changeColor);
 progress.addEventListener('change', changeColor);

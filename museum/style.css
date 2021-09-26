@@ -6,7 +6,7 @@
     scroll-behavior: smooth;
 }
 
-h1,h2,h3 {
+h1,h2,h3,h4,h5,h6 {
     margin: 0px;
 }
 main {
@@ -76,6 +76,9 @@ select {
     filter: invert(51%) sepia(30%) saturate(388%) hue-rotate(356deg) brightness(99%) contrast(88%);
 }
 
+.overlay-view {
+  position: absolute;
+}
 
 .navigation {
   border: 1px solid rgb(0, 0, 0);
@@ -740,11 +743,28 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     text-align: center;
     color: white;
     background-color: black;
-
 }
 
 .buy:hover {
   cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.overlay-view {
+  display:block;
 }
 
 .buy-section {
@@ -770,6 +790,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin: 0 auto;
   max-width: 1060px;
   max-height: 663px;
+  z-index: 3;
 }
 .buy-information {
   padding: 0 60px;
@@ -1009,8 +1030,7 @@ input::placeholder {
 .text-basic {
   padding-left: 10px;
 }
-.number-basic {
-}
+
 .senior {
   position: relative;
   margin-top: 10px;
@@ -1039,9 +1059,6 @@ input::placeholder {
   justify-content: space-between;
   font-size: 32px;
 }
-.text-total {
-}
-
 
 .cards-container {
   font-size: 12px;
@@ -1169,7 +1186,6 @@ input::placeholder {
   float: right;
 }
 
-
 .parallax {
   width: 100%;
   min-height: 400px;
@@ -1177,6 +1193,7 @@ input::placeholder {
   background-size: cover;
   background-attachment: fixed;
 }
+
 .contact-section {
     margin-top: -10px;
     margin-bottom: 70px;
@@ -1202,8 +1219,12 @@ input::placeholder {
 }
 
 .musee-uppercase {
-  padding-top: 10px;
-  margin-bottom: 45px;
+  padding-top: 2px;
+  margin-bottom: 50px;
+}
+
+.contact-section a {
+  color: #000;
 }
 
 .foot-content {
@@ -1345,6 +1366,3 @@ input::placeholder {
   border-top: 3px solid #666666;
 }
 
-.empty {
-  position: fixed;
-}
