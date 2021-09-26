@@ -1285,8 +1285,8 @@ input::placeholder {
     display: block;
     border: 2px solid rgb(95, 94, 94);
     border-radius: 50%;
-    background: url(./assets/frames/youtube2.svg)  no-repeat center;
-    background-size: 17px 17 px contain;
+    background: url(./assets/frames/youtube2.svg) no-repeat center;
+    background-size: 17px 17px contain;
 }
 
 .instagram {
@@ -1294,7 +1294,7 @@ input::placeholder {
     border: 2px solid rgb(95, 94, 94);
     border-radius: 50%;
     background: url(./assets/frames/instagram.svg) no-repeat left 12px center;
-    background-size: 17px 17 px contain;
+    background-size: 17px 17px contain;
 }
 
 .facebook {
@@ -1302,7 +1302,7 @@ input::placeholder {
     border: 2px solid rgb(95, 94, 94);
     border-radius: 50%;
     background: url(./assets/frames/facebook.svg) no-repeat center;
-    background-size: 17px 17 px contain;
+    background-size: 17px 17px contain;
 }
 
 .twitter {
@@ -1310,7 +1310,7 @@ input::placeholder {
     border: 2px solid rgb(95, 94, 94);
     border-radius: 50%;
     background: url(./assets/frames/twitter.svg) no-repeat  center;
-    background-size: 17px 17 px contain;
+    background-size: 17px 17px contain;
 }
 
 .pinterest {
@@ -1318,7 +1318,7 @@ input::placeholder {
     border: 2px solid rgb(95, 94, 94);
     border-radius: 50%;
     background: url(./assets/frames/pinterest.svg) no-repeat center;
-    background-size: 17px 17 px contain;
+    background-size: 17px 17px contain;
 }
 
 .tours {
