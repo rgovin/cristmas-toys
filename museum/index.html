@@ -5,7 +5,7 @@
   <title>Museum</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="./assets/frames/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <div class="wrapper">
   <header class="section dark-section" id="welcome">
     <section class="head-content">
       <h1 class="logo-heading">
@@ -29,13 +30,16 @@
           <li><a href="#contacts">Contacts</a></li>
         </ul>
       </nav>
+      <div class="burger">
+        <span></span>
+      </div>
     </section>
   </header>
   <main>
     <div class="overlay"></div>
     <section class="section dark-section">
       <div class="content-section welcome-section">
-        <div class="welcome">
+
           <div class="item-container">
             <div class="item active">
               <img src="./assets/Slider1.jpg" alt="Slider1">
@@ -56,25 +60,24 @@
           <div class="controls">
             <div class="conrols-numbers"><span>01 | 05</span></div>
             <div class="controls-square">
-              <img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg">
-              <img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg">
-              <img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg">
-              <img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg">
-              <img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg">
+              <div class="square"><img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg"></div>
+              <div class="square"><img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg"></div>
+              <div class="square"><img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg"></div>
+              <div class="square"><img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg"></div>
+              <div class="square"><img class="img-control" src="./assets/frames/slidepagination.svg" alt="svg"></div>
             </div>
             <div class="controls-arrows">
-              <button class="buttons-tool img-contol control left"><img src="./assets/frames/ArrowLeft.svg"
+              <button class="buttons-tool img-contol arrow control left"><img src="./assets/frames/ArrowLeft.svg"
                   alt="button"></button>
-              <button class="buttons-tool img-contol control right"><img src="./assets/frames/ArrowRight.svg"
+              <button class="buttons-tool img-contol arrow control right"><img src="./assets/frames/ArrowRight.svg"
                   alt="button"></button>
             </div>
           </div>
-        </div>
         <div class="welcome-interactive">
           <h2 class="section-title">Welcome </h2>
           <h4 class="section-title">to the louvre</h4>
           <p class="welcome-inf">From the castle to the museum</p>
-          <form action="./tours/tour1.html" target="_blank">
+          <form class="discover-form" action="./tours/tour1.html" target="_blank">
             <button class="discover">Discover the Louvre</button>
           </form>
         </div>
@@ -82,7 +85,7 @@
     </section>
     <section class="section" id="visiting">
       <div class="content-section">
-        <h2 class="section-title-general">virtual tour</h2>
+        <h2 class="section-title-general welcome-title-section">virtual tour</h2>
         <div class="virtual-tour">
           <a class="link-virtual-tour" href="./tours/tour2.html" target="_blank">
             <img src="assets/Rectangle.jpg" alt="Rectangle" class="image-tour">
@@ -152,7 +155,7 @@
         <div><button class="button-play toggle"><img src="assets/frames/video-frame.svg" alt="video-button"></button>
         </div>
         <div class="tool-bar">
-          <button class="buttons-tool toggle"><img id="play" src="assets/frames/Frame-1.svg" alt="button"></button>
+          <button class="buttons-tool toggle toggle-play"><img id="play" src="assets/frames/Frame-1.svg" alt="button"></button>
           <input class="progress" name="time" type="range" value="0" step="0.01">
           <button class="buttons-tool volume-turn"><img src="assets/frames/button(1).svg" alt="button"></button>
           <input class="volume" name="volume" type="range" value="0.3" min="0" max="1" step="0.05">
@@ -242,15 +245,15 @@
                   <button class="amount-button" type="button"
                     onclick="this.parentNode.querySelector('#num2').stepUp()">+</button>
                 </div>
-                <div>
-                  <p class="text-ticket">Total &euro;220</p>
+                <div class="total-text">
+                  <p class="text-ticket">Total &euro; 220</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="button-amount">
+          <div class="button-amount buy-now-button">
             <button class="buy">Buy now</button>
-          </div>
+          </div> 
         </div>
         <div class="content-section buy-section">
           <button class="close" type="button"></button>
@@ -361,13 +364,13 @@
         </div>
       </div>
     </section>
-    <div class="section">
+    <div class="section  section-parallax">
       <div class="parallax">
       </div>
     </div>
     <section class="section" id="contacts">
       <div class="content-section contact-section">
-        <h2 class="section-title-general">Contacts</h2>
+        <h2 class="section-title-general contact-title">Contacts</h2>
         <div class="contacts-base">
           <h4>Palais Royal</h4>
           <h4 class="musee-uppercase">Musee du Louvre</h4>
@@ -381,7 +384,7 @@
   <footer class="section dark-section">
     <div class="foot-content">
       <h4 class="logo-heading"><a href="#" class="footer-logo">Louvre</a></h4>
-      <nav >
+      <nav class="footerNav">
         <ul class="navigation-footer">
           <li><a href="#visiting">Visiting</a></li>
           <li><a href="#explore"> Explore</a></li>
@@ -408,5 +411,6 @@
     </div>
   </footer>
   <script src="./code.js"></script>
+</div>
 </body>
 

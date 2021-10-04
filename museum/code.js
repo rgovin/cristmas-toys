@@ -1,3 +1,28 @@
+// Burger
+
+let burgerButton = document.querySelector('.burger');
+let welcome = document.querySelector('.welcome-interactive');
+let navigation = document.querySelector('.navigation');
+
+burgerButton.addEventListener('click', openBurgerMenu);
+
+function openBurgerMenu () {
+  welcome.classList.toggle('hiddenWelcome');
+  navigation.classList.toggle('showNavigation');
+ if (burgerButton.classList.contains('burger'))  {
+   console.log('w')
+   burgerButton.classList.remove('burger')
+ } else if (!burgerButton.classList.contains('burger')) {
+  burgerButton.classList.add('burger')
+ }
+  burgerButton.classList.toggle('cross');
+}
+
+function showNavigation () {
+  
+}
+
+
 console.log (
   "Привет!\n Оценка - 150 баллов \n Отзыв по пунктам ТЗ .\n Не выполненные/не засчитанные пункты: \n-кнопке book в форме покупки билетов добавлен ripple-эффект\n Частично выполненные пункты:\n-тринадцать кнопок button (11 имеется)\n-блок footer\n-кликами по кнопкам + и - в секции Tiskets можно менять количество билетов\n Остальное работает! Работает сдайдер, перемешивание картинок, кастомный плеер. Спасибо за оценку! Удачи"
 );
@@ -16,7 +41,7 @@ shuffle(images);
 
 images.map(function (adress) {
   let img = document.createElement('img');
-  img = `<img class="image-gallery" src="${adress}" alt="galery1" width = "456">`;
+  img = `<img class="image-gallery" src="${adress}" alt="galery1" width = "465">`;
   pictureInnerContainer.innerHTML += img;
 })
 
