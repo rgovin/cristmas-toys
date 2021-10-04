@@ -93,7 +93,6 @@ select {
 }
 
 .navigation {
-    border: 1px solid rgb(0, 0, 0);
     display: flex;
     justify-content: right;
     align-content: center;
@@ -169,7 +168,6 @@ select {
 
 .item-container {
   position: absolute;
-  border: 1px solid rgb(247, 6, 6);
   width: 1000px;
   height: 750px;
   overflow: hidden;
@@ -220,7 +218,6 @@ select {
   width: 170px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid rgb(238, 10, 10);
 }
 .conrols-numbers {
   margin-left: 50px;
@@ -322,7 +319,6 @@ background: #9D8665;
 
 @media (max-width: 1024px) {
   .content-section {
-    border: 1px solid rgb(98, 14, 235);
     width: 985px;
     padding: 0 15px;
   }
@@ -330,7 +326,6 @@ background: #9D8665;
 
 @media (max-width: 1024px) {
   header {
-    border: 1px solid rgb(240, 6, 6);
     height: 130px;
     padding-top: -5px;
   }
@@ -345,7 +340,6 @@ background: #9D8665;
   .controls {
     width: 600px;
     height: 100px;
-    border: 1px solid rgb(238, 10, 10);
     font-size: 20px;
     margin-bottom: 10px;
     padding-right: 0;
@@ -353,7 +347,6 @@ background: #9D8665;
 
   .controls-square {
     display: flex;
-    border: 1px solid rgb(238, 10, 10);
     padding: 0;
     margin: 0;
   }
@@ -393,7 +386,6 @@ background: #9D8665;
     position: absolute;
     flex-direction: column;
     width: 200px;
-    border: 1px solid rgb(243, 9, 9);
     top: 24%;
     transition: all 2s;
   }
@@ -420,7 +412,6 @@ background: #9D8665;
 
   .contact-section {
     height: 680px;
-    border: 1px solid rgb(219, 15, 15);
     padding: 20px 0;
     background-size: 694px 440px;
   }
@@ -434,7 +425,6 @@ background: #9D8665;
     height: 110px;
   }
   .content-section {
-    border: 1px solid rgb(98, 14, 235);
     width: 730px;
     padding: 0;
   }
@@ -493,7 +483,6 @@ background: #9D8665;
     height: 90px;
   }
   .content-section {
-    border: 1px solid rgb(98, 14, 235);
     width: 400px;
     padding: 0;
   }
@@ -590,7 +579,6 @@ background: #9D8665;
     display: flex;
     flex-direction: column;
     width: 200px;
-    border: 1px solid rgb(243, 9, 9);
     left: -20px;
     top: 24%;
     transition: all 2s;
@@ -755,7 +743,6 @@ background: #9D8665;
   }
 
   .virtual-tour {
-    border: 1px solid rgb(100, 9, 9);
     height: 1000px;
     gap: 10px 40px;
     padding: 30px 100px;
@@ -765,7 +752,6 @@ background: #9D8665;
     margin-bottom: 80px;
   }
   .virtual-tour a {
-    border: 1px solid rgb(111, 231, 12);
     margin-right: 0;
     margin-top: -20px;
     width: 280px;
@@ -1807,7 +1793,6 @@ input::placeholder {
 
 .entry-ticket {
   padding: 0 15px 25px 15px;
-  border: 1px solid #000;
   width: 100%;
 }
 
@@ -1854,7 +1839,6 @@ input::placeholder {
   display: flex;
   padding: 0;
   margin: 0;
-  border: 1px solid #000;
 }
 
 .booking-simbols {
@@ -1873,7 +1857,6 @@ input::placeholder {
 .buy-tickets {
   font-family: roboto;
   padding: 30px;
-  border: 1px solid #000;
   max-width: 528px;
 }
 
