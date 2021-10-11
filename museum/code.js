@@ -6,27 +6,24 @@ console.log (
 
 // Burger
 
-let burgerButton = document.querySelector('.burger');
+let burgerButton = document.querySelector('.menu-icon');
 let welcome = document.querySelector('.welcome-interactive');
-let navigation = document.querySelector('.navigation');
+// let navigation = document.querySelector('.navigation');
+let nav = document.querySelector('.navigation-burger '); 
 
 burgerButton.addEventListener('click', openBurgerMenu);
 
 function openBurgerMenu () {
   welcome.classList.toggle('hiddenWelcome');
-  navigation.classList.toggle('showNavigation');
+  nav.classList.toggle('showNavigationBurger');
  if (burgerButton.classList.contains('burger'))  {
-   console.log('w')
    burgerButton.classList.remove('burger')
  } else if (!burgerButton.classList.contains('burger')) {
   burgerButton.classList.add('burger')
  }
-  burgerButton.classList.toggle('cross');
+  burgerButton.classList.toggle('_active');
 }
 
-function showNavigation () {
-  
-}
 
 // Gallery animation
 
@@ -79,11 +76,16 @@ document.querySelector('.close').addEventListener('click', function () {
 // Slider
 
 let items = document.querySelectorAll('.item');
+let squares = document.querySelectorAll('.square');
+const number = document.querySelector('.changed-num');
+
+
 let currentItem = 0;
 let isEnable = true;
 
 function changeCurrentItem(n) {
   currentItem = (n + items.length) % items.length
+  console.log(currentItem)
 }
 
 function hideItem(direction) {
@@ -116,16 +118,45 @@ function nextItem(n) {
   showItem('from-right');
 }
 
+function changeItemNext (n) {
+  hideItem('to-left');
+  changeCurrentItem(n);
+  showItem('from-right');
+}
+
+function changeItemPrevious (n) {
+  hideItem('to-right');
+  changeCurrentItem(n);
+  showItem('from-left');
+}
+
+squares.forEach((item, currentSq) => {
+  item.addEventListener('click', () => {
+    squares[currentItem].classList.remove('actives');
+    if (currentItem < currentSq) changeItemNext (currentSq)
+    if (currentItem > currentSq) changeItemPrevious (currentSq)
+    squares[currentItem].classList.add('actives');
+    number.innerHTML = `0${(currentItem + 1)}`
+  });
+});
+
+
 document.querySelector('.control.left').addEventListener('click', function () {
+  squares[currentItem].classList.remove('actives');
   if(isEnable) {
     previousItem(currentItem)
   }
+  number.innerHTML = `0${(currentItem + 1)}`
+  squares[currentItem].classList.add('actives');
 })
 
 document.querySelector('.control.right').addEventListener('click', function () {
+  squares[currentItem].classList.remove('actives');
   if(isEnable) {
     nextItem(currentItem)
   }
+  number.innerHTML = `0${(currentItem + 1)}`
+  squares[currentItem].classList.add('actives');
 })
 
 
