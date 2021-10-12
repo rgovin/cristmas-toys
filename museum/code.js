@@ -4,18 +4,18 @@
 let burgerButton = document.querySelector('.menu-icon');
 let welcome = document.querySelector('.welcome-interactive');
 // let navigation = document.querySelector('.navigation');
-let nav = document.querySelector('.navigation-burger '); 
+let nav = document.querySelector('.navigation-burger ');
 
 burgerButton.addEventListener('click', openBurgerMenu);
 
-function openBurgerMenu () {
+function openBurgerMenu() {
   welcome.classList.toggle('hiddenWelcome');
   nav.classList.toggle('showNavigationBurger');
- if (burgerButton.classList.contains('burger'))  {
-   burgerButton.classList.remove('burger')
- } else if (!burgerButton.classList.contains('burger')) {
-  burgerButton.classList.add('burger')
- }
+  if(burgerButton.classList.contains('burger')) {
+    burgerButton.classList.remove('burger')
+  } else if(!burgerButton.classList.contains('burger')) {
+    burgerButton.classList.add('burger')
+  }
   burgerButton.classList.toggle('_active');
 }
 
@@ -24,7 +24,7 @@ function openBurgerMenu () {
 
 const pictureInnerContainer = document.querySelector('.picture-inner-container');
 
-let images = [`./assets/galery1.jpg`, `./assets/galery2.jpg`, `./assets/galery3.jpg`, `./assets/galery4.jpg`, `./assets/galery5.jpg`, `./assets/galery6.jpg`,`./assets/galery7.jpg`,`./assets/galery8.jpg`,`./assets/galery9.jpg`,`./assets/galery10.jpg`,`./assets/galery11.jpg`,`./assets/galery12.jpg`,`./assets/galery13.jpg`,`./assets/galery14.jpg`,`./assets/galery15.jpg`];
+let images = [`./assets/galery1.jpg`, `./assets/galery2.jpg`, `./assets/galery3.jpg`, `./assets/galery4.jpg`, `./assets/galery5.jpg`, `./assets/galery6.jpg`, `./assets/galery7.jpg`, `./assets/galery8.jpg`, `./assets/galery9.jpg`, `./assets/galery10.jpg`, `./assets/galery11.jpg`, `./assets/galery12.jpg`, `./assets/galery13.jpg`, `./assets/galery14.jpg`, `./assets/galery15.jpg`];
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -113,13 +113,13 @@ function nextItem(n) {
   showItem('from-right');
 }
 
-function changeItemNext (n) {
+function changeItemNext(n) {
   hideItem('to-left');
   changeCurrentItem(n);
   showItem('from-right');
 }
 
-function changeItemPrevious (n) {
+function changeItemPrevious(n) {
   hideItem('to-right');
   changeCurrentItem(n);
   showItem('from-left');
@@ -128,8 +128,8 @@ function changeItemPrevious (n) {
 squares.forEach((item, currentSq) => {
   item.addEventListener('click', () => {
     squares[currentItem].classList.remove('actives');
-    if (currentItem < currentSq) changeItemNext (currentSq)
-    if (currentItem > currentSq) changeItemPrevious (currentSq)
+    if(currentItem < currentSq) changeItemNext(currentSq)
+    if(currentItem > currentSq) changeItemPrevious(currentSq)
     squares[currentItem].classList.add('actives');
     number.innerHTML = `0${(currentItem + 1)}`
   });
@@ -166,39 +166,39 @@ const swipedetect = (el) => {
   let startTime = 0;
   let elapsedTime = 0;
 
-  let threshold = 150; 
-  let restraint = 100; 
-  let allowedTime = 300; 
+  let threshold = 150;
+  let restraint = 100;
+  let allowedTime = 300;
 
-  surface.addEventListener ('mousedown', function (e) {
-    console.log ('s')
-      startX = e.pageX;
-      startY = e.pageY;
-      startTime - new Date ().getTime ();
-      e.preventDefault();
+  surface.addEventListener('mousedown', function (e) {
+    console.log('s')
+    startX = e.pageX;
+    startY = e.pageY;
+    startTime - new Date().getTime();
+    e.preventDefault();
   })
 
-  surface.addEventListener ('mouseup', function (e) {
-    console.log ('w')
+  surface.addEventListener('mouseup', function (e) {
+    console.log('w')
     distX = e.pageX - startX;
     distY = e.pageY - startY;
-    elapsedTime = new Date ().getTime() - startTime;
-      if (elapsedTime < allowedTime) {
-        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint)  {
-          if (distX > 0) {
-            if (isEnable) {
-              previousItem (currentItem)
-            }
-          } else {
-            if (isEnable) {
-                    nextItem (currentItem)
-              }
+    elapsedTime = new Date().getTime() - startTime;
+    if(elapsedTime < allowedTime) {
+      if(Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+        if(distX > 0) {
+          if(isEnable) {
+            previousItem(currentItem)
           }
-        }                         // избежать отрицательных значений abs
-      }
-      e.preventDefault();
+        } else {
+          if(isEnable) {
+            nextItem(currentItem)
+          }
+        }
+      }                         // избежать отрицательных значений abs
+    }
+    e.preventDefault();
   })
-  el.ondragstart = function() {
+  el.ondragstart = function () {
     return false;
   };
 }
@@ -244,11 +244,11 @@ function togglePlay() {
 
 function updateButton() {
 
-  if (this.played)  play[0].hidden = true;
+  if(this.played) play[0].hidden = true;
 }
 
-function updateButtonToPause () {
- if (this.paused) play[0].hidden = false;
+function updateButtonToPause() {
+  if(this.paused) play[0].hidden = false;
 }
 
 
@@ -264,7 +264,7 @@ function volumeOff() {
   if(!video.muted) {
     document.getElementById('volumeTurn').src = "./assets/frames/muteOff.svg";
     video.muted = true;
-    
+
   } else {
     document.getElementById('volumeTurn').src = "./assets/frames/volume.svg";
     video.muted = false;
@@ -314,7 +314,7 @@ function changeIcon() {
   if(video.paused) {
     document.getElementById('play').src = "./assets/frames/Frame-1.svg";
   } else if(video.played) {
-   document.getElementById('play').src = "./assets/frames/pause.svg";
+    document.getElementById('play').src = "./assets/frames/pause.svg";
   }
 }
 
@@ -323,7 +323,7 @@ function changeIcon() {
   if(video.paused) {
     document.getElementById('play').src = "./assets/frames/Frame-1.svg";
   } else if(video.played) {
-   document.getElementById('play').src = "./assets/frames/pause.svg";
+    document.getElementById('play').src = "./assets/frames/pause.svg";
   }
 }
 
@@ -337,86 +337,93 @@ function videoSpeedPlus() {
 //TODO Dont't work ChangeColor for volume and in time progress.
 //TODO Start volume is very hi 
 //TODO Changes is not accurate
-function changeColor() {
-  console.log('sd')
-  const value = this.value;
-  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
-}
-function changeColorForVolume() {
-  console.log('sd')
-  const value = this.value;
-  this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value*100}%, #fff ${value*100}%, white 100%)`
-}
 
+// filling in progress bars
 
-// Hook up eventsListener
+  const changeColor = (value) => `
+  linear-gradient(to right, #710707 0%, #710707 ${value}%, #c4c4c4 ${value}%, #c4c4c4 100%)`;
 
-// Start/Pause
-video.addEventListener('click', togglePlay);
-play[0].addEventListener('click', togglePlay);
-play[1].addEventListener('click', togglePlay);
-player.addEventListener('click', changeIcon);
-// updateButton
-video.addEventListener('play', updateButton);
-video.addEventListener('pause', updateButtonToPause);
-//slider
-// minus.addEventListener ('click', videoSlider);
-// plus.addEventListener ('click', videoSlider);
-
-// Volume and Time range
-
-volume.addEventListener('change', handleRange);
-volume.addEventListener('mousemove', handleRange);
-
-volume.addEventListener('change', changeColorForVolume);
-volume.addEventListener('input', changeColorForVolume);
-
-progress.addEventListener('input', changeColor);
-progress.addEventListener('change', changeColor);
-
-video.addEventListener('timeupdate', rangeMove);
-
-
-// Volume turn
-
-volumeOn.addEventListener('click', volumeOff)
-
-// FullScreen
-
-screen.addEventListener('click', fullScreen)
-
-
-// Keycode
-window.addEventListener('keydown', function (event) {
-
-
-  if(event.keyCode == 32) {
-    togglePlay();
-    changeIcon();
+  function changeColorForVolume() {
+    const value = this.value;
+    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value * 100}%, #fff ${value * 100}%, white 100%)`
   }
 
-  if(event.shiftKey && event.keyCode == 190) {
-    videoSpeedPlus()
-  }
 
-  if(event.shiftKey && event.keyCode == 188) {
-    videoSpeedMinus()
-  }
+  // Hook up eventsListener
 
-  if(event.keyCode == 77) {
-    volumeOff()
-  }
+  // Start/Pause
+  video.addEventListener('click', togglePlay);
+  play[0].addEventListener('click', togglePlay);
+  play[1].addEventListener('click', togglePlay);
+  player.addEventListener('click', changeIcon);
+  // updateButton
+  video.addEventListener('play', updateButton);
+  video.addEventListener('pause', updateButtonToPause);
+  //slider
+  // minus.addEventListener ('click', videoSlider);
+  // plus.addEventListener ('click', videoSlider);
 
-  if(event.keyCode === 70) {
+  // Volume progress
 
-    if(!document.fullscreenElement) {
-      video.requestFullscreen()
-    } else {
-      document.exitFullscreen();
+  volume.addEventListener('change', handleRange);
+  volume.addEventListener('mousemove', handleRange);
+  volume.addEventListener('change', changeColorForVolume);
+  volume.addEventListener('input', changeColorForVolume);
+
+// Progressbar, update color fill and progress  in progressbar
+
+  progress.addEventListener('input', changeColor);
+  progress.addEventListener('change', changeColor);
+  progress.addEventListener('input', () => {
+    video.currentTime = progress.value * video.duration / 100;
+  });
+  video.addEventListener('timeupdate', () => {
+    if (!isNaN(video.duration)) {
+      progress.value = video.currentTime * 100 / video.duration;
+      progress.style.background = changeColor(progress.value);
     }
-  }
+  });
 
-});
+  // Volume turn
+
+  volumeOn.addEventListener('click', volumeOff)
+
+  // FullScreen
+
+  screen.addEventListener('click', fullScreen)
+
+
+  // Keycode
+  window.addEventListener('keydown', function (event) {
+
+
+    if(event.keyCode == 32) {
+      togglePlay();
+      changeIcon();
+    }
+
+    if(event.shiftKey && event.keyCode == 190) {
+      videoSpeedPlus()
+    }
+
+    if(event.shiftKey && event.keyCode == 188) {
+      videoSpeedMinus()
+    }
+
+    if(event.keyCode == 77) {
+      volumeOff()
+    }
+
+    if(event.keyCode === 70) {
+
+      if(!document.fullscreenElement) {
+        video.requestFullscreen()
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+  });
 
 
 
