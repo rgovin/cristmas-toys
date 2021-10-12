@@ -1115,9 +1115,34 @@ background: #9D8665;
 }
 
 .video-swipe {
-  max-width: 200px;
-  max-height: 12px;
+  display: flex;
+  width: 200px;
+  height: 20px;
   margin: 0 auto;
+}
+.video-swipe-left {
+  background: url(./assets/frames/Stroke-left.svg) top left no-repeat;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.video-swipe-dott {
+  display: block;
+  margin: 0 11px;
+  width: 12px;
+  height: 12px;
+  background-color: #999999;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.active-dott {
+  background-color: #333333;
+}
+.video-swipe-right {
+  background: url(./assets/frames/Stroke-right.svg) top right no-repeat;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {

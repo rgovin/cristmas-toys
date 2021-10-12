@@ -191,20 +191,20 @@ const swipedetect = (el) => {
   let startTime = 0;
   let elapsedTime = 0;
 
-  let threshold = 150;
-  let restraint = 100;
-  let allowedTime = 300;
+  let threshold = 250;
+  let restraint = 150;
+  let allowedTime = 500;
 
   surface.addEventListener('mousedown', function (e) {
-    console.log('s')
+    e.preventDefault();
     startX = e.pageX;
     startY = e.pageY;
-    startTime - new Date().getTime();
-    e.preventDefault();
+    startTime = new Date().getTime();
+    
   })
 
   surface.addEventListener('mouseup', function (e) {
-    console.log('w')
+    e.preventDefault();
     distX = e.pageX - startX;
     distY = e.pageY - startY;
     elapsedTime = new Date().getTime() - startTime;
@@ -221,14 +221,46 @@ const swipedetect = (el) => {
         }
       }                         // избежать отрицательных значений abs
     }
+  })
+
+  surface.addEventListener('touchstart', function (e) {
+    let touchObj = e.changedTouches[0];
+    startX = touchObj.pageX;
+    startY = touchObj.pageY;
+    startTime = new Date().getTime();
     e.preventDefault();
   })
-  el.ondragstart = function () {
-    return false;
-  };
+
+  surface.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+  })
+
+  surface.addEventListener('touchend', function (e) {
+    
+    let touchObj = e.changedTouches[0];
+    distX = touchObj.pageX - startX;
+    distY = touchObj.pageY - startY;
+    console.log (startTime)
+    elapsedTime = new Date().getTime() - startTime;
+    console.log (elapsedTime)
+    if(elapsedTime < allowedTime) {
+      if(Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+        if(distX > 0) {
+          if(isEnable) {
+            previousItem(currentItem)
+          }
+        } else {
+          if(isEnable) {
+            nextItem(currentItem)
+          }
+        }
+      }                         // избежать отрицательных значений abs
+    }
+    e.preventDefault();
+  })
 }
 
-let el = document.querySelector('.item');
+let el = document.querySelector('.item-container');
 swipedetect(el);
 
 
@@ -343,14 +375,6 @@ function changeIcon() {
   }
 }
 
-function changeIcon() {
-
-  if(video.paused) {
-    document.getElementById('play').src = "./assets/frames/Frame-1.svg";
-  } else if(video.played) {
-    document.getElementById('play').src = "./assets/frames/pause.svg";
-  }
-}
 
 function videoSpeedMinus() {
   video.playbackRate = video.playbackRate - 0.25;
