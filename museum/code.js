@@ -1,8 +1,3 @@
-console.log (
-  "Привет!\n Оценка - 120 баллов \n Отзыв по пунктам ТЗ .\n Не выполненные/не засчитанные пункты: \n-Блоки покупки билетов не выполнены \n - Нет отзывчивости и резины \n- Адаптивное меню только на 1024 и якоря не работают \n Частично выполненные пункты:\n- Адаптивное меню. \n Итого 108 балло за пиксель-перфект (если сильно не придиратьсяж;) - накосяил в определенный момент и не все успел сделать идеально)\n. Нет горизонтальной прокрутки + 6 и + 6 баллов забаллов за адап.меню и оптимизацию. Спасибо за оценку! Удачи" 
-);
-
-
 
 // Burger
 
@@ -160,6 +155,58 @@ document.querySelector('.control.right').addEventListener('click', function () {
 })
 
 
+const swipedetect = (el) => {
+  let surface = el;
+
+  let startX = 0;
+  let startY = 0;
+  let distX = 0;
+  let distY = 0;
+
+  let startTime = 0;
+  let elapsedTime = 0;
+
+  let threshold = 150; 
+  let restraint = 100; 
+  let allowedTime = 300; 
+
+  surface.addEventListener ('mousedown', function (e) {
+    console.log ('s')
+      startX = e.pageX;
+      startY = e.pageY;
+      startTime - new Date ().getTime ();
+      e.preventDefault();
+  })
+
+  surface.addEventListener ('mouseup', function (e) {
+    console.log ('w')
+    distX = e.pageX - startX;
+    distY = e.pageY - startY;
+    elapsedTime = new Date ().getTime() - startTime;
+      if (elapsedTime < allowedTime) {
+        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint)  {
+          if (distX > 0) {
+            if (isEnable) {
+              previousItem (currentItem)
+            }
+          } else {
+            if (isEnable) {
+                    nextItem (currentItem)
+              }
+          }
+        }                         // избежать отрицательных значений abs
+      }
+      e.preventDefault();
+  })
+  el.ondragstart = function() {
+    return false;
+  };
+}
+
+let el = document.querySelector('.item');
+swipedetect(el);
+
+
 // Video
 document.onkeydown = function (e) {
   if(e.keyCode == 32) e.preventDefault();
@@ -197,8 +244,11 @@ function togglePlay() {
 
 function updateButton() {
 
-  this.played ? play[0].hidden = true : play[0].hidden = false;
+  if (this.played)  play[0].hidden = true;
+}
 
+function updateButtonToPause () {
+ if (this.paused) play[0].hidden = false;
 }
 
 
@@ -212,9 +262,13 @@ function handleRange() {
 function volumeOff() {
 
   if(!video.muted) {
-    video.muted = true
+    document.getElementById('volumeTurn').src = "./assets/frames/muteOff.svg";
+    video.muted = true;
+    
   } else {
+    document.getElementById('volumeTurn').src = "./assets/frames/volume.svg";
     video.muted = false;
+
   }
 }
 
@@ -230,7 +284,7 @@ function fullScreen() {
 
 function changeProgress(e) {
 
-  let scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+  let scrubTime = Math.floor((e.offsetX / progress.offsetWidth) * video.duration);
   video.currentTime = scrubTime;
 }
 
@@ -253,19 +307,23 @@ function videoSlider() {
     document.getElementById('video').src = "./assets/video/video1.mp4";
 
   }
-
 }
+
 function changeIcon() {
 
+  if(video.paused) {
+    document.getElementById('play').src = "./assets/frames/Frame-1.svg";
+  } else if(video.played) {
+   document.getElementById('play').src = "./assets/frames/pause.svg";
+  }
+}
+
+function changeIcon() {
 
   if(video.paused) {
-
-    document.getElementById('play').src = "./assets/frames/pause.svg";
-
-  } else if(video.played) {
-
     document.getElementById('play').src = "./assets/frames/Frame-1.svg";
-
+  } else if(video.played) {
+   document.getElementById('play').src = "./assets/frames/pause.svg";
   }
 }
 
@@ -300,7 +358,7 @@ play[1].addEventListener('click', togglePlay);
 player.addEventListener('click', changeIcon);
 // updateButton
 video.addEventListener('play', updateButton);
-video.addEventListener('pause', updateButton);
+video.addEventListener('pause', updateButtonToPause);
 //slider
 // minus.addEventListener ('click', videoSlider);
 // plus.addEventListener ('click', videoSlider);
@@ -337,11 +395,11 @@ window.addEventListener('keydown', function (event) {
     changeIcon();
   }
 
-  if(event.keyCode == 190) {
+  if(event.shiftKey && event.keyCode == 190) {
     videoSpeedPlus()
   }
 
-  if(event.keyCode == 188) {
+  if(event.shiftKey && event.keyCode == 188) {
     videoSpeedMinus()
   }
 
