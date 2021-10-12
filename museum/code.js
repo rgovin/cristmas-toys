@@ -1,3 +1,11 @@
+$(document).ready (function(){
+  $('.video-slider').slick( {
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: false,
+  })
+})
+
 
 // Burger
 
@@ -24,13 +32,12 @@ function openBurgerMenu() {
 const pictureInnerContainer = document.querySelector('.picture-inner-container');
 
 let images = [`./assets/galery1.jpg`, `./assets/galery2.jpg`, `./assets/galery3.jpg`, `./assets/galery4.jpg`, `./assets/galery5.jpg`, `./assets/galery6.jpg`, `./assets/galery7.jpg`, `./assets/galery8.jpg`, `./assets/galery9.jpg`, `./assets/galery10.jpg`, `./assets/galery11.jpg`, `./assets/galery12.jpg`, `./assets/galery13.jpg`, `./assets/galery14.jpg`, `./assets/galery15.jpg`];
-
+console.log (images)
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
 shuffle(images);
-
 images.map(function (adress) {
   let img = document.createElement('img');
   img = `<img class="image-gallery" src="${adress}" alt="galery1" width = "465">`;
@@ -179,6 +186,7 @@ document.querySelector('.control.right').addEventListener('click', function () {
   squares[currentItem].classList.add('actives');
 })
 
+// Hand swiper
 
 const swipedetect = (el) => {
   let surface = el;
@@ -212,14 +220,18 @@ const swipedetect = (el) => {
       if(Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
         if(distX > 0) {
           if(isEnable) {
+            squares[currentItem].classList.remove('actives');
             previousItem(currentItem)
+            squares[currentItem].classList.add('actives');
           }
         } else {
           if(isEnable) {
+            squares[currentItem].classList.remove('actives');
             nextItem(currentItem)
+            squares[currentItem].classList.add('actives');
           }
         }
-      }                         // избежать отрицательных значений abs
+      }                       
     }
   })
 
@@ -247,14 +259,18 @@ const swipedetect = (el) => {
       if(Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
         if(distX > 0) {
           if(isEnable) {
+            squares[currentItem].classList.remove('actives');
             previousItem(currentItem)
+            squares[currentItem].classList.add('actives');
           }
         } else {
           if(isEnable) {
+            squares[currentItem].classList.remove('actives');
             nextItem(currentItem)
+            squares[currentItem].classList.add('actives');
           }
         }
-      }                         // избежать отрицательных значений abs
+      }                         
     }
     e.preventDefault();
   })
@@ -474,6 +490,9 @@ function videoSpeedPlus() {
 
   });
 
+  // Video-slider
+
+ 
 
 
 
