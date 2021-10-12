@@ -32,7 +32,7 @@
         </nav>
         </nav>
         <div class="menu-box">
-          <div class= "menu-icon">
+          <div class="menu-icon">
             <span></span>
           </div>
         </div>
@@ -59,6 +59,11 @@
             <div class="item">
               <img src="./assets/Slider5.jpg" alt="Slider5">
             </div>
+          </div>
+          <div class="my-slider">
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
           <div class="controls">
             <div class="conrols-numbers"><span class="changed-num">01</span><span> | 05</span></div>
@@ -155,41 +160,59 @@
           </div>
           <video class="video-player" id="video" src="./assets/video/video0.mp4" poster="./assets/video.jpg"
             preload='metadata'></video>
-          <div><button class="button-play toggle"><img id = "bigBotton" src="assets/frames/video-frame.svg" alt="video-button"></button>
+          <div><button class="button-play toggle"><img id="bigBotton" src="assets/frames/video-frame.svg"
+                alt="video-button"></button>
           </div>
           <div class="tool-bar">
             <button class="buttons-tool toggle toggle-play"><img id="play" src="assets/frames/Frame-1.svg"
                 alt="button"></button>
             <input class="progress" name="time" type="range" value="40" step="0.01">
-            <button  class="buttons-tool volume-turn"><img id = "volumeTurn" src="assets/frames/volume.svg" alt="button"></button>
+            <button class="buttons-tool volume-turn"><img id="volumeTurn" src="assets/frames/volume.svg"
+                alt="button"></button>
             <input class="volume" name="volume" type="range" value="0.4" min="0" max="1" step="0.05">
             <button class="buttons-tool full-screen"><img src="assets/frames/button(2).svg" alt="button"></button>
           </div>
           <div class="video-slider">
-            <iframe width="450" height="250" src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0"
-              title="YouTube video player" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-            <iframe width="450" height="250" src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
-              title="YouTube video player" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-            <iframe width="450" height="250" src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
-              title="YouTube video player" loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+            <div class="slick-slide">
+              <iframe width="450" height="250" src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0"
+                title="YouTube video player" loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="slick-slide">
+              <iframe width="450" height="250" src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
+                title="YouTube video player" loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="slick-slide">
+              <iframe width="450" height="250" src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
+                title="YouTube video player" loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="slick-slide">
+              <iframe width="450" height="250" src="https://www.youtube.com/embed/aWmJ5DgyWPI"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <div class="slick-slide">
+              <iframe width="450" height="250" src="https://www.youtube.com/embed/2OR0OCr6uRE"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
           </div>
           <div class="video-swipe">
-            <button class="video-swipe-left"></button>
-                <span class="video-swipe-dott active-dott"></span>
-                <span class="video-swipe-dott"></span>
-                <span class="video-swipe-dott"></span>
-                <span class="video-swipe-dott"></span>
-                <span class="video-swipe-dott"></span>
-            <button class="video-swipe-right"></button>
+            <span class="video-swipe-dott active-dott"></span>
+            <span class="video-swipe-dott"></span>
+            <span class="video-swipe-dott"></span>
+            <span class="video-swipe-dott"></span>
+            <span class="video-swipe-dott"></span>
           </div>
         </div>
       </section>
@@ -422,6 +445,9 @@
         </div>
       </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./slick.min.js"></script>
     <script src="./code.js"></script>
   </div>
 </body>
