@@ -3,7 +3,6 @@
 
 let burgerButton = document.querySelector('.menu-icon');
 let welcome = document.querySelector('.welcome-interactive');
-// let navigation = document.querySelector('.navigation');
 let nav = document.querySelector('.navigation-burger ');
 
 burgerButton.addEventListener('click', openBurgerMenu);
@@ -135,6 +134,32 @@ squares.forEach((item, currentSq) => {
   });
 });
 
+
+// control with keys
+
+window.addEventListener('keydown', function (event) {
+  let pageHeight = window.pageYOffset;
+  if(pageHeight <= 700) {
+    if (event.keyCode == 37) {
+      squares[currentItem].classList.remove('actives');
+      if(isEnable) {
+        previousItem(currentItem)
+      }
+      number.innerHTML = `0${(currentItem + 1)}`
+      squares[currentItem].classList.add('actives');
+    }
+    if (event.keyCode == 39) {
+      squares[currentItem].classList.remove('actives');
+      if(isEnable) {
+        nextItem(currentItem)
+      }
+      number.innerHTML = `0${(currentItem + 1)}`
+      squares[currentItem].classList.add('actives');
+    }
+  }
+});
+
+// control with img arrows
 
 document.querySelector('.control.left').addEventListener('click', function () {
   squares[currentItem].classList.remove('actives');
