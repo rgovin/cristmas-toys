@@ -1,6 +1,11 @@
-export let Footer = {
+type footer = {
+  render: () => Promise<string>;
+  after_render: () => Promise<void>;
+}
+
+export const Footer:footer = {
   render: async () => {
-    let Footer = /* html */ `
+    const view = /* html */ `
         <footer class="footer">
             <div class="content has-text-centered">
                 <div class="rss-block"></div>
@@ -9,7 +14,7 @@ export let Footer = {
             </div>
         </footer>
         `;
-    return Footer;
+    return view;
   },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   after_render: async () => {},

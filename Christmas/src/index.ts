@@ -1,3 +1,10 @@
+type routes = {
+  [name:string]: {
+    render: () => Promise<string>;
+    after_render: () => Promise<void>;
+};
+}
+
 import { Home } from './components/Pages/Home/home.js';
 // import Settings from './pages/Set/Settings.js';
 // import CategoriesArt from './pages/CategiriesArts/CategoriesArt.js';
@@ -6,15 +13,15 @@ import { Home } from './components/Pages/Home/home.js';
 // import Results from './pages/Results/results.js';
 import Error404 from './components/Pages/error404.js';
 
-import Navbar from './components/Pages/HeaderFooter/header.js';
-import Footer from './components/Pages/HeaderFooter/footer.js';
+import Navbar from './components/Pages/HeaderFooter/header';
+import Footer from './components/Pages/HeaderFooter/footer';
 
 import Utils from './components/Services/Utils';
 
 import './global.css';
 
 // List of supported routes. Any url other than these routes will throw a 404 error
-export const routes = {
+export const routes:routes = {
   '/': Home,
   // '/categoriesartist': CategoriesArt,
   // '/categoriespictures': CategoriesPic,
@@ -26,9 +33,9 @@ export const routes = {
 // The router code.
 const router = async () => {
   // Lazy load view element:
-  const header = null || document.getElementById('header_container');
-  const content = null || document.getElementById('page_container');
-  const footer = null || document.getElementById('footer_container');
+  const header = null || document.getElementById('header_container') as HTMLElement;
+  const content = null || document.getElementById('page_container') as HTMLElement;
+  const footer = null || document.getElementById('footer_container') as HTMLElement;
 
   // Render the Header and footer of the page
   header.innerHTML = await Navbar.render();
@@ -56,14 +63,14 @@ const router = async () => {
   //   consile.log(item)
   // })
 
-  const x = document.getElementsByTagName('html');
+  const htmlHome = document.getElementsByTagName('html');
 
   if (parsedURL === '/') {
-    x[0].style.removeProperty('background');
-    x[0].style.background = undefined;
+    htmlHome[0].style.removeProperty('background');
+    htmlHome[0].style.background = "";
   } else {
-    x[0].style.removeProperty('background');
-    x[0].style.background = 'black';
+    htmlHome[0].style.removeProperty('background');
+    htmlHome[0].style.background = 'black';
   }
 };
 
