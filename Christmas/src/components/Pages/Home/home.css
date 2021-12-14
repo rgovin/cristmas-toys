@@ -1,0 +1,51 @@
+@media (max-width: 1920px) {
+  .central-section {
+    font-family: 'Neucha', cursive;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url("../../../Assets/ball/1.png") no-repeat 7vw 5vh/ 15% 63%,
+      url("../../../Assets/ball/1.png") no-repeat 65vw 25vh/ 15% 63%,
+      url("../../../Assets/bg.jpg") no-repeat 0 0/ 100% 100%;
+  }
+
+  .buttons-block {
+    height: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(36, 197, 219, 0.15);
+    width: 35vw;
+    height: 27vh;
+    border: 2px solid rgba(36, 197, 219, 15);
+    border-radius: 25px;
+    font-size: 53px;
+    text-align: center;
+  }
+
+  .start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(36, 197, 219, 0.15);
+    width: 15vw;
+    height: 10vh;
+    border: 2px solid rgba(36, 197, 219, 15);
+    border-radius: 30px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .start:hover {
+    cursor: pointer;
+  }
+}
