@@ -18,7 +18,7 @@ export interface IData {
   articles?: DataNews [];
 }
 
-export type IGetResp = {
-   endpoint: string,
-   options: object
+export interface render {
+  render: () => Promise<string>;
+  after_render: () => Promise<any>;
 }

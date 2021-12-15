@@ -1,9 +1,6 @@
-type footer = {
-  render: () => Promise<string>;
-  after_render: () => Promise<void>;
-}
+import { render } from '../../interface/interface'
 
-export const Footer:footer = {
+export const Footer:render = {
   render: async () => {
     const view = /* html */ `
         <footer class="footer">

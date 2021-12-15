@@ -1,0 +1,30 @@
+@media (max-width: 1920px) {
+  .central-section-toys {
+    font-family: "Neucha", cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../../../Assets/bg.jpg") no-repeat 0 0/ 100% 100%;
+    background-attachment: fixed;
+  }
+
+  /* Toys */
+
+  .toys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .toy {
+    width: 20vw;
+    height: 25vw;
+    background-color: rgba(36, 197, 219, 0.15);
+  }
+
+  .image-toy {
+    width: 50%;
+    height: 20%;
+    margin: 0 auto;
+  }
+}

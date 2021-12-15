@@ -1,6 +1,7 @@
 import Utils from '../../Services/Utils';
+import { render } from '../../interface/interface'
 
-const Navbar = {
+const Navbar:render = {
     render: async () => {
         const request = Utils.parseRequestURL();
         const parsedURL =

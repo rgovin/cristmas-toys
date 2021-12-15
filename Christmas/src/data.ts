@@ -10,7 +10,7 @@ type toy = {
 }
 
 
-const data: Array<toy> = [
+export const data: Array<toy> = [
   {
     num: '1',
     name: 'Большой шар с рисунком',
