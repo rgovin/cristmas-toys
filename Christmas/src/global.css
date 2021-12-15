@@ -29,6 +29,12 @@ a {
     height: 9vh;
   }
 
+  #home-id {
+    width: 5vw;
+    height: 8vh;
+    background: url('./Assets/svg/tree.svg')  no-repeat 0 0/ 100%;
+  }
+
   /* Main */
 
   #page_container {

@@ -51,11 +51,11 @@ export const Toys: render = {
       toyCard.append (like);
 
       heading.innerText = item.name;
-      image.style.background = `url('./src/Assets/toys/${item.num}.png') no-repeat 0 0 / cover`;
-      number.innerText = `Количество: ${item.count}`
+      image.style.background = `url('./src/Assets/toys/${item.num}.png') no-repeat 0 0 / contain`;
+      number.innerText = `Количество: ${item.count}`;
       year.innerText = `Год рокупки: ${item.year}`;
-      form.innerText = `Форма: ${item.shape}`
-      color.innerText = `Цвет: ${item.color}`
+      form.innerText = `Форма: ${item.shape}`;
+      color.innerText = `Цвет: ${item.color}`;
       size.innerText = `Размер: ${item.size}`;
 
       if (item.favorite === true) like.innerText = `Любимая: да`;
