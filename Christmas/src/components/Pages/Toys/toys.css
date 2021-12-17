@@ -281,6 +281,17 @@
    }
  
   /* Range */
+  .par-num {
+    margin: 0 0 5vh 5vw;
+  }
+
+  .par-year {
+    margin: 0 0 5vh 7vw;
+  }
+
+  .noUi-tooltip {
+    font-size: 1.1rem;
+  }
 
   /* Sort */
 

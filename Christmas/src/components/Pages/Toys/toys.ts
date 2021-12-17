@@ -1,11 +1,15 @@
 import './toys.css';
 import { render } from '../../interface/interface';
-import { data } from '../../../data'
+import { data } from '../../../data';
+import 'nouislider/dist/nouislider.css';
+import noUiSlider from 'nouislider';
+
+
 
 export const Toys: render = {
   render: async () => {
     return `
-            <section class="central-section-toys">
+            <section class="central-section-toys"> 
               <div class="set">
                 <div class="filter value-filter">
                   <form>
@@ -51,12 +55,12 @@ export const Toys: render = {
                     <fieldset>
                       <legend>Фильтры по диапазону</legend>
                       <div class="number-container">
-                        <label  for="number">Количество экземпляров:</label>
-                        <input type="range" id = "number">                 
+                        <p class="par-num">Количество экземпляров</p>
+                        <div id="slider"></div> 
                       </div>
-                      <div class="color-container">
-                        <label for="year">Год прирбретения:</label>
-                        <input type="range" id = "year">
+                      <div class="year-container">
+                        <p class="par-year">Год приобоитения</p>
+                        <div id="slider-year"></div> 
                       </div>
                     </fieldset>
                   </form>
@@ -73,7 +77,7 @@ export const Toys: render = {
                           <option value="value4">По количеству по убыванию</option>
                         </select>
                       </div>
-                      <div class = "null-filter">Сброс фильтров</div>
+                      <div class = "null-filter" id="null">Сброс фильтров</div>
                     </fieldset>
                   </form>
                 </div>
@@ -83,6 +87,65 @@ export const Toys: render = {
         `;
   },
   after_render: async () => {
+
+    
+    // NoUiSlider
+
+    const slider:any = document.getElementById('slider') as HTMLElement;
+    const sliderYear:any = document.getElementById('slider-year') as HTMLElement;
+    
+    noUiSlider.create(slider, {
+        start: [1, 12],
+        connect: true,
+        range: {
+            'min': 1,
+            'max': 12
+        },
+        format: {
+          to: function (value):string {
+              return  Math.round(value) + '';
+          },
+          from: function (value):number {
+              return Number(value.replace(',-', ''));
+          }
+        },
+        tooltips: true,
+    });
+
+    noUiSlider.create(sliderYear, {
+      start: [1940, 2020],
+      connect: true,
+      range: {
+          'min': 1940,
+          'max': 2020
+      },
+      format: {
+        to: function (value) {        
+            return  Math.round(value) + '';
+        },
+        from: function (value):number {
+            return  Number(value.replace(',-', ''));
+        }
+      },
+      tooltips: true,
+  });
+
+  const nullButton:any = document.getElementById('null');
+
+  nullButton.addEventListener('click', function () {
+      slider.noUiSlider.updateOptions({
+        start: [1, 12]
+      });
+  });
+
+  nullButton.addEventListener('click', function () {
+    sliderYear.noUiSlider.updateOptions({
+      start: [1940, 2020]
+    });
+});
+
+  
+    // Toys-block
 
     const toysBlock = document.querySelector('.toys') as HTMLElement;
 
