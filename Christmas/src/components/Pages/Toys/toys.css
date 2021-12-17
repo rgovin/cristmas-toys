@@ -1,11 +1,299 @@
+* {
+  box-sizing: border-box;
+}
+
 @media (max-width: 1920px) {
   .central-section-toys {
     font-family: "Neucha", cursive;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: url("../../../Assets/bg.jpg") no-repeat 0 0/ 100% 100%;
     background-attachment: fixed;
+  }
+  
+  /* Set */
+
+  .set {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 47vh;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+
+  .set legend {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .filter {
+    display: inline-block;
+    width: 30vw;
+    height: 47vh;
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+
+  .set .value-filter {
+    width: 37vw;
+  }
+
+  form {
+    height: 100%;
+  }
+
+  fieldset {
+    height: 100%;
+    background-color: rgba(36, 197, 219, 0.15);
+  }
+
+  .filter fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+   /* Value */
+
+   .col-word {
+    display: block;
+    margin: 0px 10px;
+  }
+
+   /* Form */
+
+  .form-container {
+    display: flex;
+  }
+
+  .value-filter label {
+    width: 3vw; 
+    height: 5vh; 
+    display: block; 
+    position: relative; 
+   }
+   
+   input[type="checkbox"] {
+     display: none;
+   }
+
+   input[type="checkbox"] + span {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    cursor: pointer; 
+   }
+
+   input[type="checkbox"]:checked + span {
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(
+      322deg) brightness(83%) contrast(88%);
+   }
+
+   .bell-image {
+    background: url('../../../Assets/svg/bell.svg') no-repeat 0 0/ contain;
+   }
+
+   .ball-image {
+    background: url('../../../Assets/svg/ball.svg') no-repeat 0 0/ contain;
+   }
+   
+   .pine-image {
+    background: url('../../../Assets/svg/pine.svg') no-repeat 0 0/ contain;
+   }
+
+   .star-image {
+    background: url('../../../Assets/svg/star.svg') no-repeat 0 0/ contain;
+   }
+
+   .snowflake-image {
+    background: url('../../../Assets/svg/snowflake.svg') no-repeat 0 0/ contain;
+   }
+
+   .toy-image {
+    background: url('../../../Assets/svg/bird_toy.svg') no-repeat 0 0/ contain;
+   }
+
+
+  /* Color */
+
+  .color-container {
+    display: flex;
+  }
+
+  .color-container .col-word {
+    margin: 10px 20px 0 10px;
+  }
+
+  .color-container input[type=checkbox] + label {
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+  }
+    
+  .color-container input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid white;
+    background-color: white;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 25px; 
+    height: 20px; 
+    padding-left: 0.1em;
+    padding-bottom: 0.5em;
+    margin-right: 0.1em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+  }
+  
+  .color-container input[type=checkbox] + label:active:before {
+    transform: scale(0);
+  }
+  
+  .color-container input[type=checkbox]:checked + label:before {
+    color: rgb(0, 0, 0);
+  }
+
+  #white + label:before {
+    background-color: white;
+    border-color: white;
+  }
+  
+  #yellow + label:before {
+    background-color: #FDD700;
+    border-color: #FDD700;
+  }
+
+  #red + label:before {
+    background-color: red;
+    border-color: red;
+  }
+
+  #blue + label:before {
+    background-color: #2299EB;
+    border-color: #2299EB;
+  }
+
+  #green + label:before {
+    background-color: #08AA05;
+    border-color: #08AA05;
+  }
+
+  /* Size */
+
+  .size-container {
+    display: flex;
+  }
+
+  .size-container .col-word {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .size-container input[type="checkbox"] {
+    display: none;
+   }
+    
+  .size-container  label {
+    font-size: 1.2rem;
+    margin-left: 4vw;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-weight: normal;
+    line-height: 30px;
+    padding: 10px 0;
+    margin-bottom: 5px;
+    vertical-align: middle;
+   }
+    
+  .size-container  label:before {
+    content: "\2714 ";
+    color: transparent;
+    display: inline-block;
+    font: 20px/30px FontAwesome;
+    margin-right: 15px;
+    position: relative;
+    text-align: center;
+    text-indent: 0px;
+    width: 30px;
+    height: 30px;
+    background: #FFF;
+    border: 1px solid #192f2d;
+    border-image: initial;
+    vertical-align: middle;
+   }
+    
+  .size-container input[type=checkbox]:checked + label:before {
+    color: rgb(243, 10, 10);
+   }
+
+  /* Likely */
+
+  .like-container {
+    display: flex;
+  }
+
+  .like-container .col-word {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .like-container input[type="checkbox"] {
+    display: none;
+   }
+    
+  .like-container  label {
+    font-size: 1.2rem;
+    margin-left: 1vw;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-weight: normal;
+    line-height: 30px;
+    padding: 10px 0;
+    margin-bottom: 5px;
+    vertical-align: middle;
+   }
+    
+  .like-container  label:before {
+    content: "\2714 ";
+    color: transparent;
+    display: inline-block;
+    font: 20px/30px FontAwesome;
+    margin-right: 15px;
+    position: relative;
+    text-align: center;
+    text-indent: 0px;
+    width: 30px;
+    height: 30px;
+    background: #FFF;
+    border: 1px solid #192f2d;
+    border-image: initial;
+    vertical-align: middle;
+   }
+    
+  .like-container input[type=checkbox]:checked + label:before {
+    color: rgb(0, 0, 0);
+   }
+ 
+  /* Range */
+
+  /* Sort */
+
+  .null-filter{
+    width: 12vw;
+    height: 3vh;
+    padding: 1px 0;
+    background-color: rgb(36, 197, 219);
+    border: 1px solid rgb(36, 197, 219);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
   }
 
   /* Toys */

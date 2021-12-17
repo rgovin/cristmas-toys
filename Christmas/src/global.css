@@ -30,9 +30,11 @@ a {
   }
 
   #home-id {
-    width: 5vw;
-    height: 8vh;
-    background: url('./Assets/svg/tree.svg')  no-repeat 0 0/ 100%;
+    width: 3vw;
+    height: 7vh;
+    margin: 1vh 10px;
+    background: url('./Assets/svg/tree.svg')  no-repeat 0 0/ contain;
+    cursor: pointer;
   }
 
   /* Main */

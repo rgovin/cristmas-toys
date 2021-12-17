@@ -6,8 +6,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url("../../../Assets/ball/1.png") no-repeat 7vw 5vh/ 15% 60%,
-      url("../../../Assets/ball/1.png") no-repeat 65vw 25vh/ 15% 60%,
+    background: url("../../../Assets/ball/1.png") no-repeat 7vw 5vh/ 17% 60%,
+      url("../../../Assets/ball/1.png") no-repeat 65vw 25vh/ 17% 60%,
       url("../../../Assets/bg.jpg") no-repeat 0 0/ 100% 100%;
     background-attachment: fixed;
   }
