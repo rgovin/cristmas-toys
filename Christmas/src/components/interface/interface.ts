@@ -1,11 +1,12 @@
-export interface DataNews {
-  author: string,
-  source: {id:string, name:string},
-  publishedAt: string,
-  title: string,
-  description: string,
-  url: string,
-  urlToImage: string
+export type toy = {
+  num:string,
+  name:string,
+  count:string,
+  year:string,
+  shape:string,
+  color:string,
+  size:string,
+  favorite:boolean,
 }
 
 export interface DataSources {
@@ -13,10 +14,6 @@ export interface DataSources {
     name: string
 }
 
-export interface IData {
-  sources?: DataSources [];
-  articles?: DataNews [];
-}
 
 export interface render {
   render: () => Promise<string>;

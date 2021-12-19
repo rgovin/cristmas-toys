@@ -1,13 +1,4 @@
-type toy = {
-  num:string,
-  name:string,
-  count:string,
-  year:string,
-  shape:string,
-  color:string,
-  size:string,
-  favorite:boolean,
-}
+import { toy } from "./components/interface/interface";
 
 
 export const data: Array<toy> = [
