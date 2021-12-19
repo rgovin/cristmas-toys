@@ -22,10 +22,21 @@ const Navbar: render = {
     if (parsedURL == '/toys') {
       const view = /* html */ `
           <nav class="navbar" role="navigation" aria-label="main navigation">
-              <div class="container">
-                <div class="navbar-item-settings" id = "volume-id">
+              <div class="container nav-container">
+                <div class="info-block">
+                  <div class="navbar-item-settings" id = "volume-id">
+                    </div>
+                    <div class="navbar-item-settings" id = "home-id">
+                    </div>
+                    <div class="toy-call">Игрушки</div>
                 </div>
-                <div class="navbar-item-settings" id = "home-id">
+                <div class="search-block">
+                  <div class="search">
+                    <form>
+                      <input type="search" placeholder="Искать">
+                      <button type="submit"></button>
+                    </form>
+                  </div>
                 </div>
                 </div>
             </nav>
