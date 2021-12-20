@@ -147,6 +147,11 @@ export const Toys: render = {
     // Toys-block
     const toysBlock = document.querySelector('.toys') as HTMLElement;
 
+    let resultArr: Array<toy> = [];
+    let sizeArr: Array<toy> = [];
+    let colorArr: Array<toy> = [];
+    let d = data;
+
     data.forEach((item): void => {
       const toyCard = document.createElement('div') as HTMLElement;
       const heading = document.createElement('h3') as HTMLElement;
@@ -240,6 +245,31 @@ export const Toys: render = {
       })
     }
 
+
+
+    // Like-filter
+
+    const likeCheck = document.getElementById('like') as HTMLInputElement;
+    likeCheck.addEventListener('change', (e) => {
+      e.stopPropagation;
+      if (likeCheck.checked) {
+        d = data.filter(v => v.favorite == true);
+        if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          toysShow(d)
+        } else {
+          resultArr = resultArr.filter(v => d.includes(v))
+          toysShow(resultArr)
+        }
+      } else {
+        d = data;
+        if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          toysShow(d)
+        } else {
+          toysShow(resultArr)
+        } 
+      }
+    })
+
     // Forms-filter
 
     const formCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form-check');
@@ -247,81 +277,66 @@ export const Toys: render = {
 
     formCheck.forEach((el) => {
       el.addEventListener('change', () => {
+
         const newArr: HTMLInputElement[] = Array.from(formCheck).filter((ele) => ele.checked)
         if (newArr.length > 0) {
           formArr = [];
           newArr.forEach((elem) => {
             switch (elem.value) {
               case "ball":
-                data.filter(v => v.shape == "шар").forEach(p => formArr.push(p))
+                d.filter(v => v.shape == "шар").forEach(p => formArr.push(p))
                 break;
               case "bell":
-                data.filter(v => v.shape == "колокольчик").forEach(p => formArr.push(p))
+                d.filter(v => v.shape == "колокольчик").forEach(p => formArr.push(p))
                 break;
               case "pine":
-                data.filter(v => v.shape == "шишка").forEach(p => formArr.push(p))
+                d.filter(v => v.shape == "шишка").forEach(p => formArr.push(p))
                 break;
               case "snowflake":
-                data.filter(v => v.shape == "снежинка").forEach(p => formArr.push(p))
+                d.filter(v => v.shape == "снежинка").forEach(p => formArr.push(p))
                 break;
               case "toy":
-                data.filter(v => v.shape == "фигурка").forEach(p => formArr.push(p))
+                d.filter(v => v.shape == "фигурка").forEach(p => formArr.push(p))
                 break;
             }
-            toysShow(formArr);
           })
         } else {
           formArr = [];
-          toysShow(data);
         }
-      })
-    })
 
-    // Color-filter
-
-    const colorCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color-check');
-    let colorArr: Array<toy> = [];
-
-    colorCheck.forEach((el) => {
-      el.addEventListener('change', () => {
-        const newArr: HTMLInputElement[] = Array.from(colorCheck).filter((ele) => ele.checked)
-        console.log(newArr)
-        if (newArr.length > 0) {
-          colorArr = [];
-          newArr.forEach((elem) => {
-            switch (elem.value) {
-              case "white":
-                data.filter(v => v.color == "белый").forEach(p => colorArr.push(p))
-                break;
-              case "yellow":
-                data.filter(v => v.color == "желтый").forEach(p => colorArr.push(p))
-                break;
-              case "red":
-                data.filter(v => v.color == "красный").forEach(p => colorArr.push(p))
-                break;
-              case "blue":
-                data.filter(v => v.color == "синий").forEach(p => colorArr.push(p))
-                break;
-              case "green":
-                data.filter(v => v.color == "зелёный").forEach(p => colorArr.push(p))
-                break;
-            }
-            toysShow(colorArr);
-          })
+        if (formArr.length > 0) {
+          if (sizeArr.length > 0 && colorArr.length == 0) {
+            resultArr = formArr.filter(v => sizeArr.includes(v));
+            console.log(resultArr, "1");
+          } else if (colorArr.length > 0 && sizeArr.length == 0) {
+            resultArr = formArr.filter(v => colorArr.includes(v));
+            console.log(resultArr, "2");
+          } else if (colorArr.length > 0 && sizeArr.length > 0) {
+            resultArr = formArr.filter(v => sizeArr.includes(v)).filter(v => colorArr.includes(v));
+            console.log(resultArr, "3");
+          } else {
+            console.log(resultArr, "4");
+            resultArr = formArr;
+          }
+        } else if (sizeArr.length > 0 && colorArr.length == 0) {
+          resultArr = sizeArr;
+        } else if (sizeArr.length == 0 && colorArr.length > 0) {
+          resultArr = colorArr;
         } else {
-          colorArr = [];
-          toysShow(data);
+          resultArr = colorArr.filter(v => sizeArr.includes(v))
         }
+
+        if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          toysShow(d)
+        } else toysShow(resultArr)
       })
     })
 
-    // Size-filter
+    //   Size filter
 
     const sizeCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.size-check');
-    let sizeArr: Array<toy> = [];
 
     sizeCheck.forEach((el) => {
-      console.log(el.value)
       el.addEventListener('change', () => {
         const newArr: HTMLInputElement[] = Array.from(sizeCheck).filter((ele) => ele.checked)
         if (newArr.length > 0) {
@@ -329,43 +344,107 @@ export const Toys: render = {
           newArr.forEach((elem) => {
             switch (elem.value) {
               case "big":
-                data.filter(v => v.size == "большой").forEach(p => sizeArr.push(p))
+                d.filter(v => v.size == "большой").forEach(p => sizeArr.push(p))
                 break;
               case "middle":
-                data.filter(v => v.size == "средний").forEach(p => sizeArr.push(p))
+                d.filter(v => v.size == "средний").forEach(p => sizeArr.push(p))
                 break;
               case "small":
-                data.filter(v => v.size == "малый").forEach(p => sizeArr.push(p))
+                d.filter(v => v.size == "малый").forEach(p => sizeArr.push(p))
                 break;
             }
-            toysShow(sizeArr);
           })
         } else {
           sizeArr = [];
-          toysShow(data);
         }
+        if (sizeArr.length > 0) {
+          if (formArr.length > 0 && colorArr.length == 0) {
+            resultArr = sizeArr.filter(v => formArr.includes(v));
+            console.log(resultArr, "1");
+          } else if (colorArr.length > 0 && formArr.length == 0) {
+            resultArr = sizeArr.filter(v => colorArr.includes(v));
+            console.log(resultArr, "2");
+          } else if (colorArr.length > 0 && formArr.length > 0) {
+            resultArr = sizeArr.filter(v => formArr.includes(v)).filter(v => colorArr.includes(v));
+            console.log(resultArr, "3");
+          } else {
+            resultArr = sizeArr
+          }
+        } else if (colorArr.length > 0 && formArr.length == 0) {
+          resultArr = colorArr;
+        } else if (colorArr.length == 0 && formArr.length > 0) {
+          resultArr = formArr;
+        } else {
+          resultArr = colorArr.filter(v => formArr.includes(v))
+        }
+
+        if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          toysShow(d)
+        } else toysShow(resultArr)
       })
     })
 
-    // Like-filter
+    // Color filter
 
-    const likeCheck = document.getElementById('like') as HTMLInputElement;
-    let likeArr: Array<toy> = [];
+    const colorCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color-check');
 
+    colorCheck.forEach((el) => {
+      el.addEventListener('change', (e) => {
+        e.stopPropagation
+        const newArr: HTMLInputElement[] = Array.from(colorCheck).filter((ele) => ele.checked)
+        if (newArr.length > 0) {
+          colorArr = [];
+          newArr.forEach((elem) => {
+            switch (elem.value) {
+              case "white":
+                d.filter(v => v.color == "белый").forEach(p => colorArr.push(p))
+                break;
+              case "yellow":
+                d.filter(v => v.color == "желтый").forEach(p => colorArr.push(p))
+                break;
+              case "red":
+                d.filter(v => v.color == "красный").forEach(p => colorArr.push(p))
+                break;
+              case "blue":
+                d.filter(v => v.color == "синий").forEach(p => colorArr.push(p))
+                break;
+              case "green":
+                d.filter(v => v.color == "зелёный").forEach(p => colorArr.push(p))
+                break;
+            }
+          })
+        } else {
+          colorArr = [];
+        }
+        if (colorArr.length > 0) {
+          if (formArr.length > 0 && sizeArr.length == 0) {
+            resultArr = colorArr.filter(v => formArr.includes(v));
+            console.log(resultArr, "1");
+          } else if (sizeArr.length > 0 && formArr.length == 0) {
+            resultArr = colorArr.filter(v => sizeArr.includes(v));
+            console.log(resultArr, "2");
+          } else if (sizeArr.length > 0 && formArr.length > 0) {
+            resultArr = colorArr.filter(v => formArr.includes(v)).filter(v => sizeArr.includes(v));
+            console.log(resultArr, "3");
+          } else {
+            resultArr = colorArr
+          }
+        } else if (sizeArr.length > 0 && formArr.length == 0) {
+          resultArr = sizeArr;
+        } else if (sizeArr.length == 0 && formArr.length > 0) {
+          resultArr = formArr;
+        } else {
+          resultArr = sizeArr.filter(v => formArr.includes(v))
+        }
 
-    likeCheck.addEventListener('change', () => {
-      if (likeCheck.checked) {
-        likeArr = [];
-
-        data.filter(v => v.favorite == true).forEach(p => likeArr.push(p));
-        toysShow(likeArr);
-      } else {
-        likeArr = [];
-        toysShow(data);
-      }
+        if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          toysShow(d)
+        } else toysShow(resultArr)
+      })
     })
 
-    
+    console.log()
+
   }
 }
 
