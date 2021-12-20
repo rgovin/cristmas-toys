@@ -41,7 +41,7 @@ const router = async () => {
 
   // Render the Header and footer of the page
   header.innerHTML = await Navbar.render();
-  await Navbar.after_render();
+ 
   footer.innerHTML = await Footer.render();
   await Footer.after_render();
 
@@ -60,6 +60,7 @@ const router = async () => {
   content.innerHTML = await page.render();
   await page.after_render();
 
+  await Navbar.after_render();
   // catergoryList.map(item => {
   //   return item.style.background = `url('../../data/img/0.jpg) no-repeat 0 0/ cover fixed`
   //   consile.log(item)

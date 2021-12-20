@@ -88,11 +88,42 @@ export const Toys: render = {
   },
   after_render: async () => {
 
+    // Find 
+    const search = document.getElementById('search') as HTMLInputElement;
+
+    search.addEventListener('input', (e) => {
+      let arr = d;
+      let resArr = resultArr;
+      const text: string = search.value;
+      if (text.length > 0) {
+        const searchText: RegExp = new RegExp(".*" + text + ".*", "gi");
+        if (resArr.length == 0) {
+          arr = arr.filter(v => {
+           return (v.name).match(searchText)
+          })
+          toysShow (arr)
+        } else  {
+          resArr = resArr.filter(v => {
+            return (v.name).match(searchText)
+           })
+           toysShow (resArr)
+        }
+      } else {
+        if (resArr.length == 0) {
+          toysShow (arr)
+        } else  {
+           toysShow (resArr)
+        }
+      }
+
+
+    })
+
     // Reset
 
     const nullButton: any = document.getElementById('null');
-
     nullButton.addEventListener('click', function () {
+      sortVal = "value1";
       slider.noUiSlider.updateOptions({
         start: [1, 12]
       });
@@ -112,7 +143,8 @@ export const Toys: render = {
       const newArrColor: HTMLInputElement[] = Array.from(colorCheck).filter((ele) => ele.checked);
       newArrColor.forEach(el => el.checked = false);
 
-      toysShow(data)
+      console.log(d)
+      toysShow(d)
     });
 
     // NoUiSlider
@@ -166,7 +198,7 @@ export const Toys: render = {
     let colorArr: Array<toy> = [];
     let d = data;
 
-    
+
     data.forEach((item): void => {
 
       if (sortVal == "value1") {
@@ -201,7 +233,7 @@ export const Toys: render = {
         })
       } else if (sortVal == "value4") {
         data.sort((a: toy, b: toy) => {
-          if (+a.count >+b.count) {
+          if (+a.count > +b.count) {
             return -1;
           }
           if (+a.count < +b.count) {
@@ -355,48 +387,48 @@ export const Toys: render = {
 
     sort.addEventListener('change', () => {
       switch (sort.value) {
-        case "value1": 
-        sortVal = "value1";
-        break;
-        case "value2": 
-        sortVal = "value2";
-        break;
-        case "value3": 
-        sortVal = "value3";
-        break;
-        case "value4": 
-        sortVal = "value4";
-        break;
-      } 
+        case "value1":
+          sortVal = "value1";
+          break;
+        case "value2":
+          sortVal = "value2";
+          break;
+        case "value3":
+          sortVal = "value3";
+          break;
+        case "value4":
+          sortVal = "value4";
+          break;
+      }
       if (resultArr.length > 0) {
-        toysShow (resultArr)
-      } else toysShow (d)
+        toysShow(resultArr)
+      } else toysShow(d)
     })
 
     // Range filter
     //  Num-range
-    
-    slider.noUiSlider.on('change', (val:any) => {
+
+    slider.noUiSlider.on('change', (val: any) => {
       let innerArr: Array<toy> = resultArr;
       const first = val[0];
       const last = val[1];
-      if(innerArr.length == 0) {
+      if (innerArr.length == 0) {
         d = data;
         d = d.filter((v) => +v.count >= +first && +v.count <= +last);
         toysShow(d);
       } else {
-        innerArr =innerArr.filter((v) => +v.count >= +first && +v.count <= +last);
+        innerArr = innerArr.filter((v) => +v.count >= +first && +v.count <= +last);
         toysShow(innerArr);
       }
     })
 
     // Year-range
 
-    sliderYear.noUiSlider.on('change', (val:any) => {
+    sliderYear.noUiSlider.on('change', (val: any) => {
       let innerArr: Array<toy> = resultArr;
       const first = val[0];
       const last = val[1];
-      if(innerArr.length == 0) {
+      if (innerArr.length == 0) {
         d = data;
         d = d.filter((v) => +v.year >= +first && +v.year <= +last);
         toysShow(d);

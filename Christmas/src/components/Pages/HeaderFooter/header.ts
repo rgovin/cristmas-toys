@@ -33,7 +33,7 @@ const Navbar: render = {
                 <div class="search-block">
                   <div class="search">
                     <form>
-                      <input type="search" placeholder="Искать">
+                      <input id="search" type="search" placeholder="Искать" autocomplete="off">
                       <button type="submit"></button>
                     </form>
                   </div>
@@ -62,6 +62,8 @@ const Navbar: render = {
     if (document.getElementById('home-id')) {
       (document.getElementById('home-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/'));
     }
+
+    
   },
 };
 
