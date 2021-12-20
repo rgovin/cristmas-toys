@@ -5,8 +5,6 @@ import { toy } from "../../interface/interface";
 import 'nouislider/dist/nouislider.css';
 import noUiSlider from 'nouislider';
 
-
-
 export const Toys: render = {
   render: async () => {
     return `
@@ -90,6 +88,33 @@ export const Toys: render = {
   },
   after_render: async () => {
 
+    // Reset
+
+    const nullButton: any = document.getElementById('null');
+
+    nullButton.addEventListener('click', function () {
+      slider.noUiSlider.updateOptions({
+        start: [1, 12]
+      });
+      sliderYear.noUiSlider.updateOptions({
+        start: [1940, 2020]
+      });
+      sort.value = "value1";
+
+      if (likeCheck.checked) likeCheck.checked = false;
+
+      const newArrForm: HTMLInputElement[] = Array.from(formCheck).filter((ele) => ele.checked);
+      newArrForm.forEach(el => el.checked = false);
+
+      const newArrSize: HTMLInputElement[] = Array.from(sizeCheck).filter((ele) => ele.checked);
+      newArrSize.forEach(el => el.checked = false);
+
+      const newArrColor: HTMLInputElement[] = Array.from(colorCheck).filter((ele) => ele.checked);
+      newArrColor.forEach(el => el.checked = false);
+
+      toysShow(data)
+    });
+
     // NoUiSlider
 
     const slider: any = document.getElementById('slider') as HTMLElement;
@@ -129,20 +154,6 @@ export const Toys: render = {
         }
       },
       tooltips: true,
-    });
-
-    const nullButton: any = document.getElementById('null');
-
-    nullButton.addEventListener('click', function () {
-      slider.noUiSlider.updateOptions({
-        start: [1, 12]
-      });
-    });
-
-    nullButton.addEventListener('click', function () {
-      sliderYear.noUiSlider.updateOptions({
-        start: [1940, 2020]
-      });
     });
 
 
