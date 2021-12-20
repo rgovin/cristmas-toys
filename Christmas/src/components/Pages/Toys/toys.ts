@@ -70,8 +70,8 @@ export const Toys: render = {
                     <fieldset>
                       <legend>Сортровка</legend>
                       <div class="sorting-container">
-                        <select name="select">
-                          <option value="value1">По названию от А до Я</option>
+                        <select id="select">
+                          <option value="value1" selected>По названию от А до Я</option>
                           <option value="value2">По названию от Я до А</option>
                           <option value="value3">По количеству по возрастанию</option>
                           <option value="value4">По количеству по убыванию</option>
@@ -148,11 +148,56 @@ export const Toys: render = {
     const toysBlock = document.querySelector('.toys') as HTMLElement;
 
     let resultArr: Array<toy> = [];
+    let sortVal = "value1";
     let sizeArr: Array<toy> = [];
     let colorArr: Array<toy> = [];
     let d = data;
 
+    
     data.forEach((item): void => {
+
+      if (sortVal == "value1") {
+        data.sort((a: toy, b: toy) => {
+          if (a.name > b.name) {
+            return 1;
+          }
+          if (a.name < b.name) {
+            return -1;
+          }
+          return 0;
+        })
+      } else if (sortVal == "value2") {
+        data.sort((a: toy, b: toy) => {
+          if (a.name > b.name) {
+            return -1;
+          }
+          if (a.name < b.name) {
+            return 1;
+          }
+          return 0;
+        })
+      } else if (sortVal == "value3") {
+        data.sort((a: toy, b: toy) => {
+          if (+a.count > +b.count) {
+            return 1;
+          }
+          if (+a.count < +b.count) {
+            return -1;
+          }
+          return 0;
+        })
+      } else if (sortVal == "value4") {
+        data.sort((a: toy, b: toy) => {
+          if (+a.count >+b.count) {
+            return -1;
+          }
+          if (+a.count < +b.count) {
+            return 1;
+          }
+          return 0;
+        })
+      }
+
       const toyCard = document.createElement('div') as HTMLElement;
       const heading = document.createElement('h3') as HTMLElement;
       const image = document.createElement('div') as HTMLElement;
@@ -199,6 +244,51 @@ export const Toys: render = {
 
     function toysShow(arr: Array<toy>): void {
       toysBlock.innerHTML = "";
+      if (sortVal == "value1") {
+        arr.sort((a: toy, b: toy) => {
+          if (a.name > b.name) {
+            return 1;
+          }
+          if (a.name < b.name) {
+            return -1;
+          }
+          return 0;
+        })
+      } else if (sortVal == "value2") {
+        arr.sort((a: toy, b: toy) => {
+          if (a.name > b.name) {
+            return -1;
+          }
+          if (a.name < b.name) {
+            return 1;
+          }
+          return 0;
+        })
+      } else if (sortVal == "value3") {
+        arr.sort((a: toy, b: toy) => {
+          if (+a.count > +b.count) {
+            return 1;
+          }
+          if (+a.count < +b.count) {
+            return -1;
+          }
+          return 0;
+        })
+        console.log(arr)
+      } else if (sortVal == "value4") {
+        arr.sort((a: toy, b: toy) => {
+          if (+a.count > +b.count) {
+            return -1;
+          }
+          if (+a.count < +b.count) {
+            return 1;
+          }
+          return 0;
+        })
+      }
+
+
+
       arr.forEach((item) => {
         const toyCard = document.createElement('div') as HTMLElement;
         const heading = document.createElement('h3') as HTMLElement;
@@ -246,6 +336,29 @@ export const Toys: render = {
     }
 
 
+    // Sort filter
+
+    const sort = document.getElementById('select') as HTMLInputElement;
+    sort.addEventListener('change', () => {
+      switch (sort.value) {
+        case "value1": 
+        sortVal = "value1";
+        break;
+        case "value2": 
+        sortVal = "value2";
+        break;
+        case "value3": 
+        sortVal = "value3";
+        break;
+        case "value4": 
+        sortVal = "value4";
+        break;
+      } 
+      if (resultArr.length > 0) {
+        toysShow (resultArr)
+      } else toysShow (data)
+    })
+
 
     // Like-filter
 
@@ -266,7 +379,7 @@ export const Toys: render = {
           toysShow(d)
         } else {
           toysShow(resultArr)
-        } 
+        }
       }
     })
 
@@ -307,15 +420,11 @@ export const Toys: render = {
         if (formArr.length > 0) {
           if (sizeArr.length > 0 && colorArr.length == 0) {
             resultArr = formArr.filter(v => sizeArr.includes(v));
-            console.log(resultArr, "1");
           } else if (colorArr.length > 0 && sizeArr.length == 0) {
             resultArr = formArr.filter(v => colorArr.includes(v));
-            console.log(resultArr, "2");
           } else if (colorArr.length > 0 && sizeArr.length > 0) {
             resultArr = formArr.filter(v => sizeArr.includes(v)).filter(v => colorArr.includes(v));
-            console.log(resultArr, "3");
           } else {
-            console.log(resultArr, "4");
             resultArr = formArr;
           }
         } else if (sizeArr.length > 0 && colorArr.length == 0) {
@@ -360,13 +469,10 @@ export const Toys: render = {
         if (sizeArr.length > 0) {
           if (formArr.length > 0 && colorArr.length == 0) {
             resultArr = sizeArr.filter(v => formArr.includes(v));
-            console.log(resultArr, "1");
           } else if (colorArr.length > 0 && formArr.length == 0) {
             resultArr = sizeArr.filter(v => colorArr.includes(v));
-            console.log(resultArr, "2");
           } else if (colorArr.length > 0 && formArr.length > 0) {
             resultArr = sizeArr.filter(v => formArr.includes(v)).filter(v => colorArr.includes(v));
-            console.log(resultArr, "3");
           } else {
             resultArr = sizeArr
           }
@@ -419,13 +525,10 @@ export const Toys: render = {
         if (colorArr.length > 0) {
           if (formArr.length > 0 && sizeArr.length == 0) {
             resultArr = colorArr.filter(v => formArr.includes(v));
-            console.log(resultArr, "1");
           } else if (sizeArr.length > 0 && formArr.length == 0) {
             resultArr = colorArr.filter(v => sizeArr.includes(v));
-            console.log(resultArr, "2");
           } else if (sizeArr.length > 0 && formArr.length > 0) {
             resultArr = colorArr.filter(v => formArr.includes(v)).filter(v => sizeArr.includes(v));
-            console.log(resultArr, "3");
           } else {
             resultArr = colorArr
           }
@@ -443,7 +546,7 @@ export const Toys: render = {
       })
     })
 
-    console.log()
+
 
   }
 }
