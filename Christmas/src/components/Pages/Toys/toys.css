@@ -281,12 +281,30 @@
    }
  
   /* Range */
+  .range-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .year-container {
+    margin-bottom: 3vh;
+    width: 19vw;
+  }
+  .number-container {
+    margin-bottom: 5vh;
+    width: 19vw;
+  }
   .par-num {
-    margin: 0 0 5vh 5vw;
+    margin-bottom: 6vh;
+    text-align: center;
+    font-size: 1.2rem;
   }
 
   .par-year {
-    margin: 0 0 5vh 7vw;
+    margin-bottom: 6vh;
+    text-align: center;
+    font-size: 1.2rem;
   }
 
   .noUi-tooltip {

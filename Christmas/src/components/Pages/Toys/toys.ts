@@ -54,13 +54,15 @@ export const Toys: render = {
                   <form>
                     <fieldset>
                       <legend>Фильтры по диапазону</legend>
-                      <div class="number-container">
-                        <p class="par-num">Количество экземпляров</p>
-                        <div id="slider"></div> 
-                      </div>
-                      <div class="year-container">
-                        <p class="par-year">Год приобоитения</p>
-                        <div id="slider-year"></div> 
+                      <div class = "range-container">
+                        <div class="number-container">
+                          <p class="par-num">Количество экземпляров</p>
+                          <div id="slider"></div> 
+                        </div>
+                        <div class="year-container">
+                          <p class="par-year">Год приобритения</p>
+                          <div id="slider-year"></div> 
+                        </div>
                       </div>
                     </fieldset>
                   </form>
@@ -339,6 +341,7 @@ export const Toys: render = {
     // Sort filter
 
     const sort = document.getElementById('select') as HTMLInputElement;
+
     sort.addEventListener('change', () => {
       switch (sort.value) {
         case "value1": 
@@ -356,9 +359,41 @@ export const Toys: render = {
       } 
       if (resultArr.length > 0) {
         toysShow (resultArr)
-      } else toysShow (data)
+      } else toysShow (d)
     })
 
+    // Range filter
+    //  Num-range
+    
+    slider.noUiSlider.on('change', (val:any) => {
+      let innerArr: Array<toy> = resultArr;
+      const first = val[0];
+      const last = val[1];
+      if(innerArr.length == 0) {
+        d = data;
+        d = d.filter((v) => +v.count >= +first && +v.count <= +last);
+        toysShow(d);
+      } else {
+        innerArr =innerArr.filter((v) => +v.count >= +first && +v.count <= +last);
+        toysShow(innerArr);
+      }
+    })
+
+    // Year-range
+
+    sliderYear.noUiSlider.on('change', (val:any) => {
+      let innerArr: Array<toy> = resultArr;
+      const first = val[0];
+      const last = val[1];
+      if(innerArr.length == 0) {
+        d = data;
+        d = d.filter((v) => +v.year >= +first && +v.year <= +last);
+        toysShow(d);
+      } else {
+        innerArr = innerArr.filter((v) => +v.year >= +first && +v.year <= +last);
+        toysShow(innerArr);
+      }
+    })
 
     // Like-filter
 
@@ -366,7 +401,7 @@ export const Toys: render = {
     likeCheck.addEventListener('change', (e) => {
       e.stopPropagation;
       if (likeCheck.checked) {
-        d = data.filter(v => v.favorite == true);
+        d = d.filter(v => v.favorite == true);
         if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
           toysShow(d)
         } else {
@@ -436,6 +471,7 @@ export const Toys: render = {
         }
 
         if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          d = data;
           toysShow(d)
         } else toysShow(resultArr)
       })
@@ -485,6 +521,7 @@ export const Toys: render = {
         }
 
         if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          d = data;
           toysShow(d)
         } else toysShow(resultArr)
       })
@@ -541,11 +578,11 @@ export const Toys: render = {
         }
 
         if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
+          d = data;
           toysShow(d)
         } else toysShow(resultArr)
       })
     })
-
 
 
   }
