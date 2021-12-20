@@ -12,7 +12,7 @@ import { Toys } from './components/Pages/Toys/toys';
 // import CategoriesPic from './pages/CategoriesPics/CategoriesPics.js';
 // import Quastion from './pages/Quastion/Quastion.js';
 // import Results from './pages/Results/results.js';
-import Error404 from './components/Pages/error404.js';
+import Error404 from './components/Pages/error404';
 
 import Navbar from './components/Pages/HeaderFooter/header';
 import Footer from './components/Pages/HeaderFooter/footer';
