@@ -88,10 +88,137 @@ export const Toys: render = {
   },
   after_render: async () => {
 
+    console.log('Привет! 190 баллов (есть мелки баги -3) \n Верстка +8 (нет полной адаптации для низкого разрешения) \n Карточки +10 \n Добавление игрушек в избранное +20 \n Сортировка +20 \n Фильтры в указанном диапазоне от и до +30 \n Фильтры по значению +38 (есть баги с фильтрацией в избранных игрушках) \n Можно отфильтровать игрушки по нескольким фильтрам разного типа +17 (нет сообщения) \n Сброс фильтров +20 \n Поиск +30 ' )
 
+    const search = document.getElementById('search') as HTMLInputElement;
+    const nullButton: any = document.getElementById('null');
+    const slider: any = document.getElementById('slider') as HTMLElement;
+    const sliderYear: any = document.getElementById('slider-year') as HTMLElement;
+    const toysBlock = document.querySelector('.toys') as HTMLElement;
+    const sort = document.getElementById('select') as HTMLInputElement;
+    const likeCheck = document.getElementById('like') as HTMLInputElement;
+    let toys = document.querySelectorAll('.toy') as NodeListOf<Element>;
+
+    const formCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form-check'); 
+    const sizeCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.size-check');
+    const colorCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color-check');
+
+    let resultArr: Array<toy> = [];
+    let formArr: Array<toy> = [];
+    let sizeArr: Array<toy> = [];
+    let colorArr: Array<toy> = [];
+    let favoriteArr: Array<toy> = [];
+    let timeResultArr: Array<toy> = [];
+   
+    let d = data;
+    let sortVal = "value1";
+
+    // Toys-block
+   
+    // Make page
+
+     toysShow(data);
+
+     function toysShow(arr: Array<toy>): void {
+       toysBlock.innerHTML = "";
+       if (sortVal == "value1") {
+         arr.sort((a: toy, b: toy) => {
+           if (a.name > b.name) {
+             return 1;
+           }
+           if (a.name < b.name) {
+             return -1;
+           }
+           return 0;
+         })
+       } else if (sortVal == "value2") {
+         arr.sort((a: toy, b: toy) => {
+           if (a.name > b.name) {
+             return -1;
+           }
+           if (a.name < b.name) {
+             return 1;
+           }
+           return 0;
+         })
+       } else if (sortVal == "value3") {
+         arr.sort((a: toy, b: toy) => {
+           if (+a.count > +b.count) {
+             return 1;
+           }
+           if (+a.count < +b.count) {
+             return -1;
+           }
+           return 0;
+         })
+         console.log(arr)
+       } else if (sortVal == "value4") {
+         arr.sort((a: toy, b: toy) => {
+           if (+a.count > +b.count) {
+             return -1;
+           }
+           if (+a.count < +b.count) {
+             return 1;
+           }
+           return 0;
+         })
+       }
+ 
+ 
+       arr.forEach((item) => {
+         const toyCard = document.createElement('div') as HTMLElement;
+         const heading = document.createElement('h3') as HTMLElement;
+         const image = document.createElement('div') as HTMLElement;
+         const number = document.createElement('p') as HTMLElement;
+         const year = document.createElement('p') as HTMLElement;
+         const form = document.createElement('p') as HTMLElement;
+         const color = document.createElement('p') as HTMLElement;
+         const size = document.createElement('p') as HTMLElement;
+         const like = document.createElement('p') as HTMLElement;
+ 
+         toyCard.classList.add('toy');
+ 
+         heading.classList.add('heading');
+         image.classList.add('image-toy');
+         number.classList.add('number-toy');
+         year.classList.add('year-toy');
+         form.classList.add('form-toy');
+         color.classList.add('color-toy');
+         size.classList.add('size-toy');
+         like.classList.add('like-toy');
+ 
+         toysBlock.append(toyCard);
+ 
+         toyCard.append(heading);
+         toyCard.append(image);
+         toyCard.append(number);
+         toyCard.append(year);
+         toyCard.append(form);
+         toyCard.append(color);
+         toyCard.append(size);
+         toyCard.append(like);
+ 
+         heading.innerText = item.name;
+         image.style.background = `url('./src/Assets/toys/${item.num}.png') no-repeat 0 0 / contain`;
+         number.innerText = `Количество: ${item.count}`;
+         year.innerText = `Год рокупки: ${item.year}`;
+         form.innerText = `Форма: ${item.shape}`;
+         color.innerText = `Цвет: ${item.color}`;
+         size.innerText = `Размер: ${item.size}`;
+ 
+         if (item.favorite === true) like.innerText = `Любимая: да`;
+         else like.innerText = `Любимая: нет`;
+ 
+         if(favoriteArr.includes(item)) {
+           toyCard.classList.add('filterToy')
+         }
+         
+         // if (favoriteArr.includes(item)) toyCard.classList.add ('filterToy')
+       })
+     }
 
     // Find 
-    const search = document.getElementById('search') as HTMLInputElement;
+
     search.focus();
     search.select();
     search.addEventListener('input', (e) => {
@@ -155,22 +282,19 @@ export const Toys: render = {
         }
       } else {
         const insertedContent = document.querySelector(".error-message") as HTMLElement | null;
-            if (insertedContent) {
-              insertedContent.remove()
-            }
+        if (insertedContent) {
+          insertedContent.remove()
+        }
         if (resArr.length == 0) {
           toysShow(arr)
         } else {
           toysShow(resArr)
         }
       }
-
-
     })
 
     // Reset
 
-    const nullButton: any = document.getElementById('null');
     nullButton.addEventListener('click', function () {
       sortVal = "value1";
       slider.noUiSlider.updateOptions({
@@ -191,15 +315,17 @@ export const Toys: render = {
 
       const newArrColor: HTMLInputElement[] = Array.from(colorCheck).filter((ele) => ele.checked);
       newArrColor.forEach(el => el.checked = false);
-
-      console.log(d)
+      
+      resultArr = [];
+      formArr = [];
+      colorArr = [];
+      sizeArr = [];
+      d = data;
       toysShow(d)
+      setToysListener()
     });
 
     // NoUiSlider
-
-    const slider: any = document.getElementById('slider') as HTMLElement;
-    const sliderYear: any = document.getElementById('slider-year') as HTMLElement;
 
     noUiSlider.create(slider, {
       start: [1, 12],
@@ -237,202 +363,7 @@ export const Toys: render = {
       tooltips: true,
     });
 
-
-    // Toys-block
-    const toysBlock = document.querySelector('.toys') as HTMLElement;
-
-    let resultArr: Array<toy> = [];
-    let sortVal = "value1";
-    let sizeArr: Array<toy> = [];
-    let colorArr: Array<toy> = [];
-    let d = data;
-
-
-    data.forEach((item): void => {
-
-      if (sortVal == "value1") {
-        data.sort((a: toy, b: toy) => {
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (a.name < b.name) {
-            return -1;
-          }
-          return 0;
-        })
-      } else if (sortVal == "value2") {
-        data.sort((a: toy, b: toy) => {
-          if (a.name > b.name) {
-            return -1;
-          }
-          if (a.name < b.name) {
-            return 1;
-          }
-          return 0;
-        })
-      } else if (sortVal == "value3") {
-        data.sort((a: toy, b: toy) => {
-          if (+a.count > +b.count) {
-            return 1;
-          }
-          if (+a.count < +b.count) {
-            return -1;
-          }
-          return 0;
-        })
-      } else if (sortVal == "value4") {
-        data.sort((a: toy, b: toy) => {
-          if (+a.count > +b.count) {
-            return -1;
-          }
-          if (+a.count < +b.count) {
-            return 1;
-          }
-          return 0;
-        })
-      }
-
-      const toyCard = document.createElement('div') as HTMLElement;
-      const heading = document.createElement('h3') as HTMLElement;
-      const image = document.createElement('div') as HTMLElement;
-      const number = document.createElement('p') as HTMLElement;
-      const year = document.createElement('p') as HTMLElement;
-      const form = document.createElement('p') as HTMLElement;
-      const color = document.createElement('p') as HTMLElement;
-      const size = document.createElement('p') as HTMLElement;
-      const like = document.createElement('p') as HTMLElement;
-
-      toyCard.classList.add('toy');
-
-      heading.classList.add('heading');
-      image.classList.add('image-toy');
-      number.classList.add('number-toy');
-      year.classList.add('year-toy');
-      form.classList.add('form-toy');
-      color.classList.add('color-toy');
-      size.classList.add('size-toy');
-      like.classList.add('like-toy');
-
-      toysBlock.append(toyCard);
-
-      toyCard.append(heading);
-      toyCard.append(image);
-      toyCard.append(number);
-      toyCard.append(year);
-      toyCard.append(form);
-      toyCard.append(color);
-      toyCard.append(size);
-      toyCard.append(like);
-
-      heading.innerText = item.name;
-      image.style.background = `url('./src/Assets/toys/${item.num}.png') no-repeat 0 0 / contain`;
-      number.innerText = `Количество: ${item.count}`;
-      year.innerText = `Год рокупки: ${item.year}`;
-      form.innerText = `Форма: ${item.shape}`;
-      color.innerText = `Цвет: ${item.color}`;
-      size.innerText = `Размер: ${item.size}`;
-
-      if (item.favorite === true) like.innerText = `Любимая: да`;
-      else like.innerText = `Любимая: нет`;
-    })
-
-    function toysShow(arr: Array<toy>): void {
-      toysBlock.innerHTML = "";
-      if (sortVal == "value1") {
-        arr.sort((a: toy, b: toy) => {
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (a.name < b.name) {
-            return -1;
-          }
-          return 0;
-        })
-      } else if (sortVal == "value2") {
-        arr.sort((a: toy, b: toy) => {
-          if (a.name > b.name) {
-            return -1;
-          }
-          if (a.name < b.name) {
-            return 1;
-          }
-          return 0;
-        })
-      } else if (sortVal == "value3") {
-        arr.sort((a: toy, b: toy) => {
-          if (+a.count > +b.count) {
-            return 1;
-          }
-          if (+a.count < +b.count) {
-            return -1;
-          }
-          return 0;
-        })
-        console.log(arr)
-      } else if (sortVal == "value4") {
-        arr.sort((a: toy, b: toy) => {
-          if (+a.count > +b.count) {
-            return -1;
-          }
-          if (+a.count < +b.count) {
-            return 1;
-          }
-          return 0;
-        })
-      }
-
-
-
-      arr.forEach((item) => {
-        const toyCard = document.createElement('div') as HTMLElement;
-        const heading = document.createElement('h3') as HTMLElement;
-        const image = document.createElement('div') as HTMLElement;
-        const number = document.createElement('p') as HTMLElement;
-        const year = document.createElement('p') as HTMLElement;
-        const form = document.createElement('p') as HTMLElement;
-        const color = document.createElement('p') as HTMLElement;
-        const size = document.createElement('p') as HTMLElement;
-        const like = document.createElement('p') as HTMLElement;
-
-        toyCard.classList.add('toy');
-
-        heading.classList.add('heading');
-        image.classList.add('image-toy');
-        number.classList.add('number-toy');
-        year.classList.add('year-toy');
-        form.classList.add('form-toy');
-        color.classList.add('color-toy');
-        size.classList.add('size-toy');
-        like.classList.add('like-toy');
-
-        toysBlock.append(toyCard);
-
-        toyCard.append(heading);
-        toyCard.append(image);
-        toyCard.append(number);
-        toyCard.append(year);
-        toyCard.append(form);
-        toyCard.append(color);
-        toyCard.append(size);
-        toyCard.append(like);
-
-        heading.innerText = item.name;
-        image.style.background = `url('./src/Assets/toys/${item.num}.png') no-repeat 0 0 / contain`;
-        number.innerText = `Количество: ${item.count}`;
-        year.innerText = `Год рокупки: ${item.year}`;
-        form.innerText = `Форма: ${item.shape}`;
-        color.innerText = `Цвет: ${item.color}`;
-        size.innerText = `Размер: ${item.size}`;
-
-        if (item.favorite === true) like.innerText = `Любимая: да`;
-        else like.innerText = `Любимая: нет`;
-      })
-    }
-
-
     // Sort filter
-
-    const sort = document.getElementById('select') as HTMLInputElement;
 
     sort.addEventListener('change', () => {
       switch (sort.value) {
@@ -451,7 +382,10 @@ export const Toys: render = {
       }
       if (resultArr.length > 0) {
         toysShow(resultArr)
-      } else toysShow(d)
+      } else {
+        toysShow(data)
+      }
+      setToysListener()
     })
 
     // Range filter
@@ -469,6 +403,7 @@ export const Toys: render = {
         innerArr = innerArr.filter((v) => +v.count >= +first && +v.count <= +last);
         toysShow(innerArr);
       }
+      setToysListener()
     })
 
     // Year-range
@@ -485,40 +420,41 @@ export const Toys: render = {
         innerArr = innerArr.filter((v) => +v.year >= +first && +v.year <= +last);
         toysShow(innerArr);
       }
+      setToysListener()
     })
 
     // Like-filter
 
-    const likeCheck = document.getElementById('like') as HTMLInputElement;
+
     likeCheck.addEventListener('change', (e) => {
-      e.stopPropagation;
+    
       if (likeCheck.checked) {
+        timeResultArr = resultArr;
         d = d.filter(v => v.favorite == true);
-        if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
-          toysShow(d)
-        } else {
+        if (resultArr.length > 0) {
           resultArr = resultArr.filter(v => d.includes(v))
           toysShow(resultArr)
+        } else {
+          toysShow(d)
         }
       } else {
         d = data;
-        if (sizeArr.length == 0 && colorArr.length == 0 && formArr.length == 0) {
-          toysShow(d)
+        if (resultArr.length > 0) {
+          toysShow(timeResultArr)
         } else {
-          toysShow(resultArr)
+          toysShow(d)
         }
       }
+      setToysListener()
     })
 
     // Forms-filter
-
-    const formCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.form-check');
-    let formArr: Array<toy> = [];
-
+    
     formCheck.forEach((el) => {
       el.addEventListener('change', () => {
 
-        const newArr: HTMLInputElement[] = Array.from(formCheck).filter((ele) => ele.checked)
+        const newArr: HTMLInputElement[] = Array.from(formCheck).filter((ele) => ele.checked);
+
         if (newArr.length > 0) {
           formArr = [];
           newArr.forEach((elem) => {
@@ -566,13 +502,12 @@ export const Toys: render = {
           d = data;
           toysShow(d)
         } else toysShow(resultArr)
+        setToysListener()
       })
     })
 
     //   Size filter
-
-    const sizeCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.size-check');
-
+ 
     sizeCheck.forEach((el) => {
       el.addEventListener('change', () => {
         const newArr: HTMLInputElement[] = Array.from(sizeCheck).filter((ele) => ele.checked)
@@ -616,12 +551,12 @@ export const Toys: render = {
           d = data;
           toysShow(d)
         } else toysShow(resultArr)
+        setToysListener()
       })
+
     })
 
     // Color filter
-
-    const colorCheck: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color-check');
 
     colorCheck.forEach((el) => {
       el.addEventListener('change', (e) => {
@@ -673,10 +608,46 @@ export const Toys: render = {
           d = data;
           toysShow(d)
         } else toysShow(resultArr)
+        setToysListener()
       })
+
     })
 
+    // Add to favorite
+ 
+    function setToysListener() {
+      
+      toys = document.querySelectorAll('.toy') as NodeListOf<Element>;
+      toys.forEach(el => el.addEventListener('click', (e) => {
+        let newArr: Array<toy>;
+        console.log(favoriteArr)
+        const cont: string | null = el.childNodes[0].textContent;
+        if (resultArr.length == 0) {newArr = d;}
+        else {newArr = resultArr};
+        if (favoriteArr.length < 20) {
 
+          newArr = newArr.filter(el => el.name == cont);
+           
+            if (!favoriteArr.includes(newArr[0])) {
+              favoriteArr.push(newArr[0]);
+              el.classList.toggle('filterToy');
+            } else {
+              favoriteArr = favoriteArr.filter(el => el !== newArr[0]);
+              el.classList.toggle('filterToy');
+            }
+      
+          const numOfFavorite = document.querySelector('.favorites') as HTMLElement;
+          numOfFavorite.innerText = favoriteArr.length.toString()
+        } else if (el.classList.contains('filterToy')) {
+          newArr = newArr.filter(el => el.name == cont);
+          favoriteArr = favoriteArr.filter(el => el !== newArr[0]);
+          el.classList.toggle('filterToy');
+        } else {
+          alert ('Извините, все слоты заполнены')
+        } 
+      }))
+    }
+    setToysListener()
   }
 }
 

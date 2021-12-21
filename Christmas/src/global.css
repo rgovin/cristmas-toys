@@ -9,7 +9,13 @@ a {
   color: white;
 }
 
-@media (max-width: 1920px) {
+
+
+@media (max-width: 2560px) {
+
+  html {
+    font-size: 16px;
+  }
 
    body {
     color: rgb(255, 255, 255);
@@ -24,6 +30,18 @@ a {
   }
 
    /* Header */
+
+   .favorites {
+     margin-left: 15vw;
+     width: 40px;
+     height: 40px;   
+     border: 1px solid white;
+     border-radius: 50%;
+     background-color: rgb(33, 148, 163);
+     text-align: center;
+     padding-top: 10px;
+     font-size: 1rem;
+    }
 
    #header_container {
     height: 9vh;
@@ -45,22 +63,22 @@ a {
   }
 
   .search-block {
-    margin-right: 10vw;
+    display: flex;
+    align-items: center;
+    width: 35vw;
+    margin-right: 5vw;
   }
 
-  .search {
-    margin-top: 2vh;
-  }
 
   .error-message {
     font-size: 0.8rem;
-    width: 250px;
+    width: 15vw;
     color: red;
   }
 
   .search form {
     position: relative;
-    width: 250px;
+    width: 15vw;
     margin: 0 auto;
   }
 
@@ -132,5 +150,11 @@ a {
     height: 100%;
     width: 13%;
     background: url('./Assets/rs_school_js\ 1.png') no-repeat 0 0/100% 100%;
+  }
+}
+
+@media (max-width: 1450px)  {
+  html {
+    font-size: 14px;
   }
 }

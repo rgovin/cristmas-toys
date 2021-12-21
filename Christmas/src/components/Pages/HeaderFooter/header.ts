@@ -37,6 +37,7 @@ const Navbar: render = {
                       <button type="submit"></button>
                     </form>
                   </div>
+                  <div class="favorites"></div>
                 </div>
                 </div>
             </nav>

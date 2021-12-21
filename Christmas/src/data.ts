@@ -84,7 +84,7 @@ export const data: Array<toy> = [
   },
   {
     num: '9',
-    name: 'Колокольчик старинный',
+    name: 'Колокольчик старинный белый',
     count: '2',
     year: '1950',
     shape: 'колокольчик',
@@ -474,7 +474,7 @@ export const data: Array<toy> = [
   },
   {
     num: '48',
-    name: 'Желтый шар с бантом',
+    name: 'Желтый шар с белым бантом',
     count: '6',
     year: '1960',
     shape: 'шар',
@@ -605,3 +605,4 @@ export const data: Array<toy> = [
 ];
 
 export default data;
+
