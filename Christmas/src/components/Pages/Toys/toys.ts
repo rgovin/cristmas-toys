@@ -88,9 +88,12 @@ export const Toys: render = {
   },
   after_render: async () => {
 
+
+
     // Find 
     const search = document.getElementById('search') as HTMLInputElement;
-
+    search.focus();
+    search.select();
     search.addEventListener('input', (e) => {
       let arr = d;
       let resArr = resultArr;
@@ -99,20 +102,66 @@ export const Toys: render = {
         const searchText: RegExp = new RegExp(".*" + text + ".*", "gi");
         if (resArr.length == 0) {
           arr = arr.filter(v => {
-           return (v.name).match(searchText)
+            return (v.name).match(searchText)
           })
-          toysShow (arr)
-        } else  {
+          if (arr.length == 0) {
+            search.setAttribute('pattern', '[0-9]');
+            const customValidy = "Извините, совпадений не обнаружено";
+            const insertedContent = document.querySelector(".error-message") as HTMLElement | null;
+            const form = document.getElementById('form') as HTMLElement
+            if (insertedContent) {
+              insertedContent.remove()
+            }
+            if (search.validity.patternMismatch == true) {
+              const block = document.createElement("div")
+              block.innerText = customValidy;
+              block.classList.add("error-message")
+              form.append(block)
+            }
+            toysShow(arr)
+          } else {
+            const insertedContent = document.querySelector(".error-message") as HTMLElement | null;
+            if (insertedContent) {
+              insertedContent.remove()
+            }
+            toysShow(arr)
+          }
+        } else {
           resArr = resArr.filter(v => {
             return (v.name).match(searchText)
-           })
-           toysShow (resArr)
+          })
+          if (resArr.length == 0) {
+            search.setAttribute('pattern', '[0-9]');
+            const customValidy = "Извините, совпадений не обнаружено";
+            const insertedContent = document.querySelector(".error-message") as HTMLElement | null;
+            const form = document.getElementById('form') as HTMLElement
+            if (insertedContent) {
+              insertedContent.remove()
+            }
+            if (search.validity.patternMismatch == true) {
+              const block = document.createElement("div")
+              block.innerText = customValidy;
+              block.classList.add("error-message")
+              form.append(block)
+            }
+            toysShow(resArr)
+          } else {
+            const insertedContent = document.querySelector(".error-message") as HTMLElement | null;
+            if (insertedContent) {
+              insertedContent.remove()
+            }
+            toysShow(resArr)
+          }
         }
       } else {
+        const insertedContent = document.querySelector(".error-message") as HTMLElement | null;
+            if (insertedContent) {
+              insertedContent.remove()
+            }
         if (resArr.length == 0) {
-          toysShow (arr)
-        } else  {
-           toysShow (resArr)
+          toysShow(arr)
+        } else {
+          toysShow(resArr)
         }
       }
 

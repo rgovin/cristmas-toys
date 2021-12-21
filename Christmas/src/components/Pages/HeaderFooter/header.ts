@@ -32,7 +32,7 @@ const Navbar: render = {
                 </div>
                 <div class="search-block">
                   <div class="search">
-                    <form>
+                    <form id="form">
                       <input id="search" type="search" placeholder="Искать" autocomplete="off">
                       <button type="submit"></button>
                     </form>
