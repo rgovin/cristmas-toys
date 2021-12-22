@@ -91,8 +91,10 @@ export const Toys: render = {
     console.log('Привет! 190 баллов (есть мелки баги -3) \n Верстка +8 (нет полной адаптации для низкого разрешения) \n Карточки +10 \n Добавление игрушек в избранное +20 \n Сортировка +20 \n Фильтры в указанном диапазоне от и до +30 \n Фильтры по значению +38 (есть баги с фильтрацией в избранных игрушках) \n Можно отфильтровать игрушки по нескольким фильтрам разного типа +17 (нет сообщения) \n Сброс фильтров +20 \n Поиск +30 ' )
 
     const search = document.getElementById('search') as HTMLInputElement;
-    const nullButton: any = document.getElementById('null');
-    const slider: any = document.getElementById('slider') as HTMLElement;
+    const nullButton = document.getElementById('null') as HTMLInputElement;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const slider: any= document.getElementById('slider') as HTMLElement;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sliderYear: any = document.getElementById('slider-year') as HTMLElement;
     const toysBlock = document.querySelector('.toys') as HTMLElement;
     const sort = document.getElementById('select') as HTMLInputElement;
@@ -399,7 +401,7 @@ export const Toys: render = {
     // Range filter
     //  Num-range
 
-    slider.noUiSlider.on('change', (val: any) => {
+    slider.noUiSlider.on('change', (val: Array<number>) => {
       let innerArr: Array<toy> = resultArr;
       const first = val[0];
       const last = val[1];
@@ -416,7 +418,7 @@ export const Toys: render = {
 
     // Year-range
 
-    sliderYear.noUiSlider.on('change', (val: any) => {
+    sliderYear.noUiSlider.on('change', (val: Array<number>) => {
       let innerArr: Array<toy> = resultArr;
       const first = val[0];
       const last = val[1];

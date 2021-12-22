@@ -23,6 +23,6 @@
         "no-console": 0,
         "class-methods-use-this": "off",
         "prettier/prettier": ["off", {"singleQuote": true, "parser": "flow"}],
-        "@typescript-eslint/no-explicit-any": "off" 
+        "@typescript-eslint/no-explicit-any": "error" 
     }
 }
