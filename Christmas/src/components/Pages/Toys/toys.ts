@@ -107,7 +107,7 @@ export const Toys: render = {
     let formArr: Array<toy> = [];
     let sizeArr: Array<toy> = [];
     let colorArr: Array<toy> = [];
-    let favoriteArr: Array<toy> = [];
+    let favoriteArr: Array<toy>  = [];
     let timeResultArr: Array<toy> = [];
    
     let d = data;
@@ -151,7 +151,6 @@ export const Toys: render = {
            }
            return 0;
          })
-         console.log(arr)
        } else if (sortVal == "value4") {
          arr.sort((a: toy, b: toy) => {
            if (+a.count > +b.count) {
@@ -208,12 +207,21 @@ export const Toys: render = {
  
          if (item.favorite === true) like.innerText = `Любимая: да`;
          else like.innerText = `Любимая: нет`;
- 
-         if(favoriteArr.includes(item)) {
-           toyCard.classList.add('filterToy')
+         
+         if(localStorage.getItem('favorites')) {
+          favoriteArr = JSON.parse(localStorage.getItem('favorites') || '{}')
+
+          if (favoriteArr.find((el) => el.num == item.num)) toyCard.classList.add ('filterToy');
+
+          const numOfFavorite = document.querySelector('.favorites') as HTMLElement;
+          numOfFavorite.innerText = favoriteArr.length.toString();
+
+         } else {
+          if(favoriteArr.includes(item)) {
+            toyCard.classList.add('filterToy');
+          }
          }
          
-         // if (favoriteArr.includes(item)) toyCard.classList.add ('filterToy')
        })
      }
 
@@ -226,7 +234,7 @@ export const Toys: render = {
       let resArr = resultArr;
       const text: string = search.value;
       if (text.length > 0) {
-        const searchText: RegExp = new RegExp(".*" + text + ".*", "gi");
+        const searchText = new RegExp(".*" + text + ".*", "gi");
         if (resArr.length == 0) {
           arr = arr.filter(v => {
             return (v.name).match(searchText)
@@ -620,28 +628,45 @@ export const Toys: render = {
       toys = document.querySelectorAll('.toy') as NodeListOf<Element>;
       toys.forEach(el => el.addEventListener('click', (e) => {
         let newArr: Array<toy>;
-        console.log(favoriteArr)
         const cont: string | null = el.childNodes[0].textContent;
+
+        if (localStorage.getItem('favorites')) {  
+          favoriteArr = JSON.parse(localStorage.getItem('favorites') || '')
+        }
+
+
         if (resultArr.length == 0) {newArr = d;}
-        else {newArr = resultArr};
+        else {newArr = resultArr}
+
+
         if (favoriteArr.length < 20) {
 
           newArr = newArr.filter(el => el.name == cont);
-           
-            if (!favoriteArr.includes(newArr[0])) {
+            
+
+            if (!favoriteArr.find(el => el.num == newArr[0].num)) {
               favoriteArr.push(newArr[0]);
               el.classList.toggle('filterToy');
+
+
+              localStorage.setItem('favorites', JSON.stringify(favoriteArr))
             } else {
-              favoriteArr = favoriteArr.filter(el => el !== newArr[0]);
+              favoriteArr = favoriteArr.filter(el => el.num !== newArr[0].num);
               el.classList.toggle('filterToy');
+
+              localStorage.setItem('favorites', JSON.stringify(favoriteArr))
             }
+           
       
           const numOfFavorite = document.querySelector('.favorites') as HTMLElement;
           numOfFavorite.innerText = favoriteArr.length.toString()
+
         } else if (el.classList.contains('filterToy')) {
           newArr = newArr.filter(el => el.name == cont);
-          favoriteArr = favoriteArr.filter(el => el !== newArr[0]);
+          favoriteArr = favoriteArr.filter(el => el.num !== newArr[0].num);
           el.classList.toggle('filterToy');
+
+          localStorage.setItem('favorites', JSON.stringify(favoriteArr))
         } else {
           alert ('Извините, все слоты заполнены')
         } 
