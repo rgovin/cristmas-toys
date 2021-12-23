@@ -1,5 +1,6 @@
 import Utils from '../../Services/Utils';
-import { render } from '../../interface/interface'
+import { render } from '../../interface/interface';
+
 
 const Navbar: render = {
   render: async () => {
@@ -12,7 +13,6 @@ const Navbar: render = {
       const view = /* html */ `
           <nav class="navbar" role="navigation" aria-label="main navigation">
               <div class="container">
-                <div class="navbar-item-settings" id = "volume-id">
                 </div>
                 </div>
             </nav>
@@ -28,7 +28,7 @@ const Navbar: render = {
                     </div>
                     <div class="navbar-item-settings" id = "home-id">
                     </div>
-                    <div class="toy-call">Игрушки</div>
+                    <div class="toy-call" id="tree-id">Нарядить ёлку</div>
                 </div>
                 <div class="search-block">
                   <div class="search">
@@ -43,28 +43,45 @@ const Navbar: render = {
             </nav>
           `;
       return view;
-    }
-    const view = /* html */ `
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="container">
-                <span class="navbar-item-home" id = "toHome-id">
-                </span>
-                <span class="navbar-item-settings" id = "toSet-id">
-                </span>
+    } if (parsedURL == '/tree') {
+      const view = /* html */ `
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container nav-container">
+                <div class="info-block">
+                    <div class="navbar-item-settings" id="home-id"></div>
+                    <div class="toy-call" id="toys-id">Игрушки</div>
+                </div>
               </div>
-          </nav>
-        `;
-    return view;
+            </nav>
+          `;
+      return view;
+    }
+    return "view";
   },
   after_render: async () => {
-    if (document.getElementById('toHome-id')) {
-      (document.getElementById('toHome-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/'))
+    const trueSound = new Audio('../../../src/Assets/audio/audio.mp3');
+     
+    if (document.getElementById('volume-id')) {
+      (document.getElementById('volume-id') as HTMLElement).addEventListener('click', () => {
+        if (trueSound.paused) {
+          trueSound.play();
+          trueSound.loop;
+        } else {
+          trueSound.pause();
+        }
+      })
     }
+   
     if (document.getElementById('home-id')) {
-      (document.getElementById('home-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/'));
+      (document.getElementById('home-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/'))
+    }
+    if (document.getElementById('tree-id')) {
+      (document.getElementById('tree-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/tree'));
+    }
+    if (document.getElementById('toys-id')) {
+      (document.getElementById('toys-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/toys'));
     }
 
-    
   },
 };
 

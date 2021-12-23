@@ -60,6 +60,13 @@ a {
     margin: 2vh 0 0 5vw;
     font-family: "Neucha", cursive;
     font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  
+  .toy-call:hover {
+   transform: scale(1.1);
   }
 
   .search-block {
@@ -111,12 +118,26 @@ a {
     color: #F9F0DA;
   }
 
+  #volume-id{
+    width: 3vw;
+    height: 7vh;
+    margin: 1vh 10px;
+    background: url('./Assets/svg/volume.svg')  no-repeat 0 0/ contain;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
   #home-id {
     width: 3vw;
     height: 7vh;
     margin: 1vh 10px;
     background: url('./Assets/svg/tree.svg')  no-repeat 0 0/ contain;
     cursor: pointer;
+    transition: 0.3s;
+  }
+
+  #home-id:hover {
+   transform: scale(1.1);
   }
 
   /* Main */

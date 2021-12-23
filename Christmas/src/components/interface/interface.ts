@@ -11,5 +11,6 @@ export type toy = {
 
 export interface render {
   render: () => Promise<string>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   after_render: () => Promise<any>;
 }

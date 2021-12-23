@@ -7,7 +7,7 @@ type routes = {
 
 import { Home } from './components/Pages/Home/home';
 import { Toys } from './components/Pages/Toys/toys';
-// import Settings from './pages/Set/Settings.js';
+import Tree from './components/Pages/Tree/tree';
 // import CategoriesArt from './pages/CategiriesArts/CategoriesArt.js';
 // import CategoriesPic from './pages/CategoriesPics/CategoriesPics.js';
 // import Quastion from './pages/Quastion/Quastion.js';
@@ -21,10 +21,12 @@ import Utils from './components/Services/Utils';
 
 import './global.css';
 
+
 // List of supported routes. Any url other than these routes will throw a 404 error
 export const routes:routes = {
   '/': Home,
   '/toys': Toys,
+  '/tree': Tree,
   // '/categoriesartist': CategoriesArt,
   // '/categoriespictures': CategoriesPic,
   // '/quastion': Quastion,
