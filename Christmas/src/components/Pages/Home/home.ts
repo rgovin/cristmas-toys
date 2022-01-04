@@ -1,8 +1,8 @@
 
 import './home.css';
-import { render } from '../../interface/interface';
+// import { render } from '../../interfaces/interface';
 
-export const Home:render = {
+export const Home = {
   render: async () => {
     return `
             <section class="central-section">

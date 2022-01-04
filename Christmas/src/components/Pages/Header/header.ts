@@ -1,8 +1,56 @@
-import Utils from '../../Services/Utils';
-import { render } from '../../interface/interface';
+import { Parent } from '../../../types/types';
+import { Component } from '../../Component';
+import Utils, { redirect } from '../../Services/Utils';
+import homeNav from './templates/homeNav.html';
+import toysNav from './templates/toysNav.html';
+import treeNav from './templates/treeNav.html';
+import { Paths } from '../../../constants/paths';
+
+type Path = string;
+
+export class Header extends Component{
+  constructor() {
+    super(homeNav);
+  }
+
+  getTemplate(path: Path){
+    switch (path){
+      case Paths.home:
+        return homeNav;
+      case Paths.toys:
+        return toysNav;
+      case Paths.tree:
+        return treeNav;
+      default:
+        return '';
+    }
+  }
+
+  onPathChange(path: Path){
+    const template = this.getTemplate(path);
+    this.changeTemplate(template);
+    // this.render();
+    this.navMenuInit();
+  }
+
+  getNavMenu(){
+    return {
+      home: document.getElementById('home-id'),
+      tree: document.getElementById('tree-id'),
+      toys: document.getElementById('toys-id'),
+    }
+  }
+
+  navMenuInit(){
+    const navMenu = this.getNavMenu();
+    if (navMenu.home) navMenu.home.addEventListener('click', () => redirect(Paths.home));
+    if (navMenu.tree) navMenu.tree.addEventListener('click', () => redirect(Paths.tree));
+    if (navMenu.toys) navMenu.toys.addEventListener('click', () => redirect(Paths.toys));
+  }
+}
 
 
-const Navbar: render = {
+const Navbar = {
   render: async () => {
     const request = Utils.parseRequestURL();
     const parsedURL =
@@ -43,7 +91,8 @@ const Navbar: render = {
             </nav>
           `;
       return view;
-    } if (parsedURL == '/tree') {
+    }
+    if (parsedURL == '/tree') {
       const view = /* html */ `
           <nav class="navbar" role="navigation" aria-label="main navigation">
               <div class="container nav-container">
@@ -73,13 +122,13 @@ const Navbar: render = {
     }
    
     if (document.getElementById('home-id')) {
-      (document.getElementById('home-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/'))
+      (document.getElementById('home-id') as HTMLElement).addEventListener('click', (): string => (location.href = '/'))
     }
     if (document.getElementById('tree-id')) {
-      (document.getElementById('tree-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/tree'));
+      (document.getElementById('tree-id') as HTMLElement).addEventListener('click', (): string => (location.href = '/tree'));
     }
     if (document.getElementById('toys-id')) {
-      (document.getElementById('toys-id') as HTMLElement).addEventListener('click', (): string => (location.href = '#/toys'));
+      (document.getElementById('toys-id') as HTMLElement).addEventListener('click', (): string => (location.href = '/toys'));
     }
 
   },

@@ -1,10 +1,80 @@
 import './toys.css';
-import { render } from '../../interface/interface';
-import { data } from '../../../data';
-import { toy } from "../../interface/interface";
+// import { render } from '../../interfaces/interface';
+// import { data } from '../../../data';
+// import { toy } from "../../interfaces/interface";
 import 'nouislider/dist/nouislider.css';
 import noUiSlider from 'nouislider';
+import { Component } from '../../Component';
+import { Basic, Data, Parent, Toy as IToy } from '../../../types/types';
+import homeNav from '../Header/templates/homeNav.html';
+import toysMenu from './templates/toysMenu.html'
+import toysData from '../../../data.json';
+import { Toy } from './toy';
+import { ValueFilter } from '../../ValueFilter';
+import { RangeFilter } from '../../RangeFilter';
+import { SortFilter } from '../../SortFilter';
 
+type Container = Component | null;
+
+export class Toys extends Component {
+  toys: Toy[];
+  toysContainer: Container;
+  valueFilter: Component;
+  rangeFilter: Component;
+  sortingFilter: Component;
+
+  constructor() {
+    super(toysMenu);
+    this.toys = Toys.createToys();
+    this.valueFilter = new ValueFilter();
+    this.rangeFilter = new RangeFilter();
+    this.sortingFilter = new SortFilter();
+    this.toysContainer = null;
+
+    this.init()
+  }
+
+  static createToys() {
+    return toysData.map((toyData) => {
+      const {num, ...toy} = toyData;
+      const image = `./src/Assets/toys/${num}.png`;
+      const hide = false;
+
+      return new Toy({ hide, image, num, ...toy} as IToy)
+    });
+  }
+
+  onFilterChange(filters: Data){
+    const { colors, shape, size, favorite } = filters;
+    this.toys.forEach((toy) => {
+      const { color, shape, year, size, favorite } = toy.model;
+    });
+
+    this.clear('.toys');
+
+  }
+
+  clearToys() {
+    if (this.toysContainer) {
+      // const container = this.toysContainer.getContainer();
+      // while (container.firstChild) container.removeChild(container.firstChild);
+    }
+  }
+
+  init(){
+    // this.effects.add(this.renderEffect.bind(this));
+    this.valueFilter.modelEffects.add(this.onFilterChange.bind(this));
+
+    this.insert('.set', [
+      this.valueFilter,
+      this.rangeFilter,
+      this.sortingFilter,
+    ]);
+    this.insert('.toys', this.toys);
+  }
+}
+
+/*
 export const Toys: render = {
   render: async () => {
     return `
@@ -678,4 +748,4 @@ export const Toys: render = {
   }
 }
 
-export default Toys;
+export default Toys;*/

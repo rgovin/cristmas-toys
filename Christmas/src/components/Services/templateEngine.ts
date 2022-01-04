@@ -1,0 +1,1 @@
+import { Data } from '../../types/types';export const templateEngine = (template: string, data: Data) =>  template.replace(/{{(.*?)}}/g, (m, $1) =>  data.hasOwnProperty($1) ? data[$1] : $1);

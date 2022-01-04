@@ -9,12 +9,13 @@
     "noImplicitAny": true,
     "strict": true,
     "allowJs": true,
-    
+    "resolveJsonModule": true
   },
   "lib": ["es2015"],
   "include": [
     "src/**/*",
   ],
+  "typeRoots": [ "../node_modules/@types", "../types"],
   "exclude": [
     "node_modules",
     "./src/**/*.spec.ts"

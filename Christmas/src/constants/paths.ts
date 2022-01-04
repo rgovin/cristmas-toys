@@ -1,0 +1,1 @@
+export const Paths = {  home: '/',  toys: '/toys',  tree: '/tree'};

@@ -1,11 +1,11 @@
 import './tree.css';
-import { render } from '../../interface/interface';
-import { data } from '../../../data';
-import { toy } from "../../interface/interface";
+// import { render } from '../../interfaces/interface';
+// import { data } from '../../../data';
+// import { toy } from "../../interfaces/interface";
 import 'nouislider/dist/nouislider.css';
 import noUiSlider from 'nouislider';
 
-export const Tree: render = {
+export const Tree = {
   render: async () => {
     return `
             <section class="central-section"> 
@@ -17,4 +17,5 @@ export const Tree: render = {
     console
   }
 }
+
 export default Tree;

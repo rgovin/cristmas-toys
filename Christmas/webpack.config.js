@@ -15,14 +15,15 @@ const baseConfig = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            },
-            {
               test: /\.ts$/,
               use: 'ts-loader',
               exclude: /node_modules/,
             },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+
             {
               test: /\.(png|svg|jpg|jpeg|gif)$/i,
               type: 'asset/resource',
@@ -38,11 +39,15 @@ const baseConfig = {
                            loader: 'url-loader?limit=100000',
                        }
                    ]
+            },
+          {
+            test: /\.html$/,
+            use: 'raw-loader'
           }
         ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', ".html"],
     },
     plugins: [
         new HtmlWebpackPlugin({

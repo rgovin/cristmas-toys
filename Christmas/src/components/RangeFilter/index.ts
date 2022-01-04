@@ -1,0 +1,1 @@
+import { Component } from '../Component';import { Data, Template } from '../../types/types';import html from './template.html';export class RangeFilter extends Component {  constructor() {    super(html);  }}
